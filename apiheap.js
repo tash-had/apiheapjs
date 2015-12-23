@@ -1,7 +1,4 @@
-var SHORT_URL = null;
-
-
-function apiheap(source) {
+function apiheap(source, key) {
     SOURCE_ID = source.toLowerCase();
     if (SOURCE_ID === "reddit") {
         this.reddit = function(subreddit, params, reqItem) {
@@ -11,53 +8,56 @@ function apiheap(source) {
         }
 
     } else if (SOURCE_ID === "tumblr") {
-        this.tumblr = function(tumblr_url, key, reqItem) {
+        this.SOURCE_KEY = key;
+        this.tumblr = function(tumblr_url, reqItem) {
             this.SOURCE_NAME = tumblr_url;
-            this.SOURCE_KEY = key;
         }
 
     } else if (SOURCE_ID === "bitly") {
-        this.bitly = function(key, link) {
+        this.SHORT_URL;
+        this.SOURCE_KEY = key;
+        var bitly_frame = "https://api-ssl.bitly.com/v3/shorten?access_token=" + this.SOURCE_KEY + "&";
+        this.bitly = function(link) {
             this.SOURCE_NAME = link;
-            this.SOURCE_KEY = key;
-            var bitly_frame = "https://api-ssl.bitly.com/v3/shorten?access_token=" + this.SOURCE_KEY + "&";
             this.FINAL_URL = bitly_frame + "longUrl=" + encodeURIComponent(this.SOURCE_NAME) + "&format=json";
             try {
-                $.ajax({
+                /*
+                Set Ajax Response to this.RESPONSE. --This is a workaround to be able to return the link to the user without an undefined value.
+                User can send response to bitlyLinkParse(); 
+                */ //
+                this.RESPONSE = $.ajax({
                     url: this.FINAL_URL,
                     dataType: 'json',
                     type: 'GET',
-                    cache: false,
-                    success: function(data) {
-                        $(data.data).each(function(index, value) {
-                            SHORT_URL = "http://bit.ly/" + value.hash;
-                        });
-                    }
+                    cache: false
                 });
+
             } catch (err) {
                 errorHandle("bitly request error");
             }
-
         }
     } else {
         errorHandle("invalid source");
     }
 }
-
+//Take JSON Response from BitLy and fetch link 
+function bitlyLinkParse(bitly_json_data) {
+    var bitly_response = JSON.parse(bitly_json_data.responseText);
+    return bitly_response.data.url;
+}
+//Handle Errors 
 function errorHandle(errMessage) {
     alert("APIHEAP ERROR: " + errMessage);
 }
-
 
 /*
 ** BITLY https://bitly.com/a/oauth_apps 
 PARAMS: oathkey, longlink
 
-var myVar = new apiheap("bitly"); 
-myVar.bitly("auth_token", "long_link");
+var myVar = new apiheap("bitly", "api_token"); 
+myVar.bitly("long_url");
 function onClickMe(){
-	document.write(SHORT_URL); 
-} 
-
+	bitlyLinkParse(myVar.RESPONSE);
+}
 *NOTE: CALL AFTER AN ACTION EG.BUTTON PRESS. OTHERWISE VALUE = null. 
 */
