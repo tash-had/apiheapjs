@@ -16,7 +16,7 @@ function apiheap(source, key) {
     	this.SOURCE_KEY = key;
     	this.tumblr = function(tumblr_url, reqItem, opt_params) {
     		this.SOURCE_NAME = tumblr_url;
-    		var tumblr_frame = "api.tumblr.com/v2/blog/" + this.SOURCE_NAME; 
+    		var tumblr_frame = "http://api.tumblr.com/v2/blog/" + this.SOURCE_NAME; 
     		if(isUndefined(reqItem)){
     			if(isUndefined(opt_params)){
     				this.FINAL_URL = tumblr_frame + "/posts/?api_key=" + this.SOURCE_KEY; 
@@ -32,6 +32,16 @@ function apiheap(source, key) {
     				this.OPT_PARAMS = opt_params; 
     				this.FINAL_URL = tumblr_frame + "/posts/" + this.REQ_ITEM + "?api_key=" + this.SOURCE_KEY + "&" + this.OPT_PARAMS;  
     			}
+    		}
+    		try{
+    			this.RESPONSE = $.ajax({
+    				url: this.FINAL_URL,
+    				type: 'POST',
+    				dataType: 'jsonp',
+    				cache: false 
+    			});
+    		}catch(err){
+    			errorHandle("tumblr request error"); 
     		}
     	}
     } else if (SOURCE_ID === "bitly") {
@@ -66,18 +76,37 @@ function bitlyParse(bitly_json_data) {
 	var bitly_response = JSON.parse(bitly_json_data.responseText);
 	return bitly_response.data.url;
 }
+function tumblrParse(tumblr_json_data, item, blog_info, total_posts){
+	var tumblrResponse = tumblr_json_data.responseJSON.response; 
+	console.log(tumblrResponse); 
+	
+	if(blog_info===true){
+		return tumblr_json_data.responseJSON.response.blog; 
+	}else if(total_posts===true){
+		return tumblr_json_data.responseJSON.response.total_posts;
+	}else{
+		
+	}
+}
 
 //Handle Errors 
 function errorHandle(errMessage) {
 	alert("APIHEAP ERROR: " + errMessage);
 }
 
+var x = new apiheap("tumblr", "AR53KZcOUK8PYzyebMamkQYeMxMJ3CJwGes6L5Fhbw49LBlUB1"); 
+x.tumblr("humansofnewyork.com");
+function myFunction(){
+	console.log(tumblrParse(x.RESPONSE, null,null, true)); 
+}
 
 /*
 CONTENTS: 
 REDDIT
 TUMBLR
 BITLY 
+
+parse object yourself or use a function 
 ** BITLY https://bitly.com/a/oauth_apps 
 PARAMS: oathkey, longlink
 
