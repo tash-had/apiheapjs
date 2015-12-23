@@ -138,7 +138,7 @@ function errorHandle(errMessage) {
 	alert("APIHEAP ERROR: " + errMessage);
 }
 
-var x = new apiheap("tumblr", "x"); 
+var x = new apiheap("tumblr", "tumblr_key"); 
 x.tumblr("humansofnewyork.com");
 function myFunction(){
 	console.log(tumblrParse(x.RESPONSE,null)); 
