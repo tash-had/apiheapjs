@@ -12,7 +12,7 @@ function apiheap(source, key) {
 			this.SOURCE_NAME = subreddit;
 			this.FINAL_URL = "http://www.reddit.com/r/" + this.SOURCE_NAME;
 		}
-    } else if (SOURCE_ID === "tumblr") { //REQ ITEM AND OPT_PARAMS IS NULLABLE
+    } else if (SOURCE_ID === "tumblr") { //REQ ITEM AND OPT_PARAMS IS NULLABLE..can set them as nothing 
     	this.SOURCE_KEY = key;
     	this.tumblr = function(tumblr_url, reqItem, opt_params) {
     		this.SOURCE_NAME = tumblr_url;
