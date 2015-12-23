@@ -76,28 +76,72 @@ function bitlyParse(bitly_json_data) {
 	var bitly_response = JSON.parse(bitly_json_data.responseText);
 	return bitly_response.data.url;
 }
-function tumblrParse(tumblr_json_data, item, blog_info, total_posts){
+function tumblrParse(tumblr_json_data, item){
 	var tumblrResponse = tumblr_json_data.responseJSON.response; 
-	console.log(tumblrResponse); 
-	
-	if(blog_info===true){
-		return tumblr_json_data.responseJSON.response.blog; 
-	}else if(total_posts===true){
-		return tumblr_json_data.responseJSON.response.total_posts;
+	var itemReq = item; 
+
+	if(isUndefined(itemReq)){
+		return tumblrResponse.posts;
 	}else{
-		
+		switch(itemReq){
+			case "blog_info": 
+			return tumblrResponse.blog; 
+			break;
+
+			case "total_posts": 
+			return tumblrResponse.total_posts;
+			break; 
+
+			case "photo_urls": 
+			break; 
+
+			case "post_urls": 
+			break; 
+
+			case "post_titles": 
+			break; 
+
+			case "post_captions": 
+			break; 
+
+			case "post_titles": 
+			break; 
+
+			case "post_bodys": 
+			break; 
+
+			case "post_ids": 
+			break; 
+
+
+			default: 
+			errorHandle("tumblr item request error"); 
+			break; 
+		}
 	}
 }
 
+function tumblrItemParse(json_data, item){
+	var RETURN_VALUE = []; 
+	try{
+		$(tumblrResponse.posts).each(function(index, value){
+			$(value).each(function(idx, val){
+				RETURN_VALUE.push(val.photos); 
+			});	
+		});
+	}catch(err){
+		errorHandle("tumblr item request error"); 
+	}
+}
 //Handle Errors 
 function errorHandle(errMessage) {
 	alert("APIHEAP ERROR: " + errMessage);
 }
 
-var x = new apiheap("tumblr", "AR53KZcOUK8PYzyebMamkQYeMxMJ3CJwGes6L5Fhbw49LBlUB1"); 
+var x = new apiheap("tumblr", "x"); 
 x.tumblr("humansofnewyork.com");
 function myFunction(){
-	console.log(tumblrParse(x.RESPONSE, null,null, true)); 
+	console.log(tumblrParse(x.RESPONSE,null)); 
 }
 
 /*
