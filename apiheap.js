@@ -81,6 +81,7 @@ function tumblrParse(tumblr_json_data, item){
 	var itemReq = item; 
 
 	if(isUndefined(itemReq)){
+		//returns array of blog-post objects
 		return tumblrResponse.posts;
 	}else{
 		switch(itemReq){
@@ -96,17 +97,21 @@ function tumblrParse(tumblr_json_data, item){
 
 			//Returns array of direct links to all images in JSON data
 			case "photo_urls": 
-			return tumblrPhotosParse(tumblrResponse); 
+			return tumblrPostParse(tumblrResponse, null, true); 
 			break; 
 
+			//Returns array of captions to photos in JSON data 
+			case "photo_captions": 
+			return tumblrPostParse(tumblrResponse, "caption", false, true); 
+			break;
+
+			case "photo_slugs": 
+			break; 
+
+
+			//Returns array of links to posts in JSON data
 			case "post_urls": 
-
-			break; 
-
-			case "post_titles": 
-			break; 
-
-			case "post_captions": 
+			return tumblrPostParse(tumblrResponse, "post_url"); 
 			break; 
 
 			case "post_titles": 
@@ -118,8 +123,7 @@ function tumblrParse(tumblr_json_data, item){
 			case "post_ids": 
 			break; 
 
-			case "photo_slugs": 
-			break; 
+
 
 			case "post_dates": 
 			break; 
@@ -131,14 +135,22 @@ function tumblrParse(tumblr_json_data, item){
 	}
 }
 
-//Function to get all original size images 
-function tumblrPhotosParse(json_data){
+function tumblrPostParse(json_data, property, photo_parse, html_strip){
 	var RETURN_VALUE = []; 
 	try{
 		$(json_data.posts).each(function(index, value){
-			$(value).each(function(idx, val){
-				RETURN_VALUE.push(val.photos[0].original_size.url);  
-			});	
+			if(photo_parse){
+				$(value).each(function(idx, val){
+					RETURN_VALUE.push(val.photos[0].original_size.url);  
+				});
+			}else{
+				if(html_strip){
+					var bare_text = jQuery('<p>' + value[property] + '</p>').text(); 
+					RETURN_VALUE.push(bare_text); 
+				}else{
+					RETURN_VALUE.push(value[property]);
+				}
+			}
 		});
 	}catch(err){}
 	finally{
@@ -146,44 +158,8 @@ function tumblrPhotosParse(json_data){
 	}
 }
 
-
 //Handle Errors 
 function errorHandle(errMessage) {
 	alert("APIHEAP ERROR: " + errMessage);
 }
 
-////////////////// Testing 
-
-
-
-/*
-CONTENTS: 
-REDDIT
-TUMBLR
-BITLY 
-
--NOTE; create delay before running function
--NOTE: usage example; using multiple arrays 
-
-parse object yourself or use a function 
-** BITLY https://bitly.com/a/oauth_apps 
-PARAMS: oathkey, longlink
-
-BITLY USAGE 
-
-var bitlyObj = new apiheap("bitly", "auth_token"), bitlyLink; 
-bitlyObj.bitly("long_link"); 
-function myFunction(){
-	bitlyLink = bitlyParse(bitlyObj.RESPONSE); 
-}
-
-
-TUMBLR IMAGE USAGE
-var x = new apiheap("tumblr", "tumblr_key"), z; 
-x.tumblr("humansofnewyork.com", "photo", 'limit=10');
-function myFunction(){
-	z = tumblrParse(x.RESPONSE,"photo_urls"); 
-	console.log(z); 
-}
-*NOTE: CALL AFTER AN ACTION EG.BUTTON PRESS. OTHERWISE VALUE = null. 
-*/
