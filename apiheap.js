@@ -84,18 +84,23 @@ function tumblrParse(tumblr_json_data, item){
 		return tumblrResponse.posts;
 	}else{
 		switch(itemReq){
+			//Returns object with blog info 
 			case "blog_info": 
 			return tumblrResponse.blog; 
 			break;
 
+			//Returns number of total posts 
 			case "total_posts": 
 			return tumblrResponse.total_posts;
 			break; 
 
+			//Returns array of direct links to all images in JSON data
 			case "photo_urls": 
+			return tumblrPhotosParse(tumblrResponse); 
 			break; 
 
 			case "post_urls": 
+
 			break; 
 
 			case "post_titles": 
@@ -126,18 +131,22 @@ function tumblrParse(tumblr_json_data, item){
 	}
 }
 
-function tumblrItemParse(json_data, item){
+//Function to get all original size images 
+function tumblrPhotosParse(json_data){
 	var RETURN_VALUE = []; 
 	try{
-		$(tumblrResponse.posts).each(function(index, value){
+		$(json_data.posts).each(function(index, value){
 			$(value).each(function(idx, val){
-				RETURN_VALUE.push(val.photos); 
+				RETURN_VALUE.push(val.photos[0].original_size.url);  
 			});	
 		});
-	}catch(err){
-		errorHandle("tumblr item request error"); 
+	}catch(err){}
+	finally{
+		return RETURN_VALUE; 
 	}
 }
+
+
 //Handle Errors 
 function errorHandle(errMessage) {
 	alert("APIHEAP ERROR: " + errMessage);
@@ -145,17 +154,16 @@ function errorHandle(errMessage) {
 
 ////////////////// Testing 
 
-var x = new apiheap("tumblr", "AR53KZcOUK8PYzyebMamkQYeMxMJ3CJwGes6L5Fhbw49LBlUB1"); 
-x.tumblr("humansofnewyork.com");
-function myFunction(){
-	console.log(tumblrParse(x.RESPONSE,null)); 
-}
+
 
 /*
 CONTENTS: 
 REDDIT
 TUMBLR
 BITLY 
+
+-NOTE; create delay before running function
+-NOTE: usage example; using multiple arrays 
 
 parse object yourself or use a function 
 ** BITLY https://bitly.com/a/oauth_apps 
@@ -169,5 +177,13 @@ function myFunction(){
 	bitlyLink = bitlyParse(bitlyObj.RESPONSE); 
 }
 
+
+TUMBLR IMAGE USAGE
+var x = new apiheap("tumblr", "tumblr_key"), z; 
+x.tumblr("humansofnewyork.com", "photo", 'limit=10');
+function myFunction(){
+	z = tumblrParse(x.RESPONSE,"photo_urls"); 
+	console.log(z); 
+}
 *NOTE: CALL AFTER AN ACTION EG.BUTTON PRESS. OTHERWISE VALUE = null. 
 */
