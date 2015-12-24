@@ -95,7 +95,7 @@ function tumblrParse(tumblr_json_data, item){
 			return tumblrResponse.total_posts;
 			break; 
 
-			//Returns array of direct links to all images in JSON data
+			//Returns array of direct links to all images for each post in JSON data
 			case "photo_urls": 
 			return tumblrPostParse(tumblrResponse, null, true); 
 			break; 
@@ -105,29 +105,52 @@ function tumblrParse(tumblr_json_data, item){
 			return tumblrPostParse(tumblrResponse, "caption", false, true); 
 			break;
 
-			case "photo_slugs": 
+			//Returns array of slugs for each post in JSON data
+			case "post_slugs": 
+			return tumblrPostParse(tumblrResponse, "slug"); 
 			break; 
-
 
 			//Returns array of links to posts in JSON data
 			case "post_urls": 
 			return tumblrPostParse(tumblrResponse, "post_url"); 
 			break; 
 
-			case "post_titles": 
-			break; 
+			//Returns an array of the type of each post in JSON data
+			case "post_types": 
+			return tumblrPostParse(tumblrResponse, "type"); 
+			break;
 
-			case "post_bodys": 
-			break; 
-
-			case "post_ids": 
-			break; 
-
-
-
+			//Returns an array of the publish date of each post in JSON data
 			case "post_dates": 
+			return tumblrPostParse(tumblrResponse, "date"); 
 			break; 
 
+			//Returns an array of the note count on each post in JSON data 
+			case "post_notes": 
+			return tumblrPostParse(tumblrResponse, "note_count"); 
+			break; 
+
+			//Returns an array of SHORT links for each post in JSON data
+			case "post_url_short": 
+			return tumblrPostParse(tumblrResponse, "short_url"); 
+			break; 
+
+			//Returns an array of SHORT 
+			case "post_summaries": 
+			return tumblrPostParse(tumblrResponse, "summary"); 
+			break;
+
+			//Returns an array with the timestamp of each post in JSON data 
+			case "post_timestamp": 
+			return tumblrPostParse(tumblrResponse, "timestamp"); 
+			break; 
+
+			//Returns an array with the id of each post in JSON data 
+			case "post_id": 
+			return tumblrPostParse(tumblrResponse, "id"); 
+			break; 
+
+			//Invalid itemReq
 			default: 
 			errorHandle("tumblr item request error"); 
 			break; 
