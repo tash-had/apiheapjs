@@ -113,6 +113,11 @@ function tumblrParse(tumblr_json_data, item){
 			case "post_ids": 
 			break; 
 
+			case "photo_slugs": 
+			break; 
+
+			case "post_dates": 
+			break; 
 
 			default: 
 			errorHandle("tumblr item request error"); 
@@ -138,7 +143,9 @@ function errorHandle(errMessage) {
 	alert("APIHEAP ERROR: " + errMessage);
 }
 
-var x = new apiheap("tumblr", "tumblr_key"); 
+////////////////// Testing 
+
+var x = new apiheap("tumblr", "AR53KZcOUK8PYzyebMamkQYeMxMJ3CJwGes6L5Fhbw49LBlUB1"); 
 x.tumblr("humansofnewyork.com");
 function myFunction(){
 	console.log(tumblrParse(x.RESPONSE,null)); 
@@ -153,6 +160,8 @@ BITLY
 parse object yourself or use a function 
 ** BITLY https://bitly.com/a/oauth_apps 
 PARAMS: oathkey, longlink
+
+BITLY USAGE 
 
 var bitlyObj = new apiheap("bitly", "auth_token"), bitlyLink; 
 bitlyObj.bitly("long_link"); 
