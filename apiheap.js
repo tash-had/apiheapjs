@@ -1,5 +1,5 @@
 isUndefined = function(value) {
-    if (typeof(value) === 'undefined' || value === null) {
+    if (typeof(value) === 'undefined' || value === null || value === 'null') {
         return true;
     } else {
         return false;
@@ -87,24 +87,25 @@ function tumblrParse(tumblr_json_data, item) {
         return tumblrResponse.posts;
     } else {
         switch (itemReq) {
+
             //Returns object with blog info 
             case "blog_info":
                 return tumblrResponse.blog;
                 break;
 
                 //Returns number of total posts 
-            case "total_posts":
+            case "post_total":
                 return tumblrResponse.total_posts;
                 break;
 
                 //Returns array of direct links to all images for each post in JSON data
-            case "photo_urls":
+            case "post_photo_urls":
                 return tumblrPostParse(tumblrResponse, null, true);
                 break;
 
                 //Returns array of captions to photos in JSON data 
-            case "photo_captions":
-                return tumblrPostParse(tumblrResponse, "caption", false, true);
+            case "post_captions":
+                return tumblrPostParse(tumblrResponse, "caption");
                 break;
 
                 //Returns array of slugs for each post in JSON data
@@ -147,9 +148,99 @@ function tumblrParse(tumblr_json_data, item) {
                 return tumblrPostParse(tumblrResponse, "timestamp");
                 break;
 
+                //Returns an array of tag arrays. Tag arrays are arrays containing all the tags given a post in JSON data 
+            case "post_tags":
+                return tumblrPostParse(tumblrResponse, "tags");
+                break;
+
                 //Returns an array with the id of each post in JSON data 
             case "post_id":
                 return tumblrPostParse(tumblrResponse, "id");
+                break;
+
+                //Returns an array of links for origin of shared/reblogged posts in JSON data. ie. Source of reblogged content 
+            case "post_source":
+                return tumblrPostParse(tumblrResponse, "source_url");
+                break;
+
+                //Returns array of links attatched to a post (link posts); 
+            case "post_link":
+                return tumblrPostParse(tumblrResponse, "url");
+                break;
+
+                //Returns array of body from TEXT posts in JSON data 
+            case "post_body":
+                return tumblrPostParse(tumblrResponse, "body");
+                break;
+
+                //Returns an array of titles from posts in JSON data 
+            case "post_title":
+                return tumblrPostParse(tumblrResponse, "title");
+                break;
+
+                //Returns an array of text from QUOTE posts in JSON data 
+            case "post_quote_text":
+                return tumblrPostParse(tumblrResponse, "text");
+                break;
+
+                //Returns an array of dialogue arrays. Dialogue arrays are a set of objects, each object as a line in the dialogue 
+            case "post_chats":
+                return tumblrPostParse(tumblrResponse, "dialogue");
+                break;
+
+                //Returns an array of image links to album art for AUDIO posts in JSON data 
+            case "post_audio_art":
+                return tumblrPostParse(tumblrResponse, "album_art");
+                break;
+
+                //Returns an array of artist names for AUDIO posts in JSON data 
+            case "post_audio_artist":
+                return tumblrPostParse(tumblrResponse, "artist");
+                break;
+
+                //Returns an array of HTML embed links to for AUDIO psots in JSON data
+            case "post_audio_embed":
+                return tumblrPostParse(tumblrResponse, "embed");
+                break;
+
+                //Returns an array of track names for AUDIO posts in JSON data 
+            case "post_audio_track":
+                return tumblrPostParse(tumblrResponse, "track_name");
+                break;
+
+                //Returns an array of durations in seconds for all VIDEO posts in JSON data 
+            case "post_video_length":
+                return tumblrPostParse(tumblrResponse, "duration");
+                break;
+
+                //Returns an array of image links for the thumbnails of each VIDEO post in JSON data 
+            case "post_video_thumb":
+                return tumblrPostParse(tumblrResponse, "thumbnail_url");
+                break;
+
+                //Returns an array of direct links for each VIDEO post in JSON data 
+            case "post_video_url":
+                return tumblrPostParse(tumblrResponse, "video_url");
+                break;
+
+                //Array of answers for ANSWER posts in JSON data. Note: If an answer post is reblogged, answers will contain HTML formatting showing author.  
+            case "post_answers_ans":
+                return tumblrPostParse(tumblrResponse, "answer");
+                break;
+
+                //Array of askers for ANSWER posts in JSON data 
+            case "post_answers_asker":
+                return tumblrPostParse(tumblrResponse, "asking_name");
+                break;
+
+                //Array of the tumblr URLs of askers for ANSWER posts in JSON data
+            case "post_answers_asker_url":
+                return tumblrPostParse(tumblrResponse, "asking_url");
+                break;
+
+                //Returns array of questions asked for all ANSWER posts in JSON data
+            case "post_answers_question":
+                return tumblrPostParse(tumblrResponse, "question");
                 break;
 
                 //Invalid itemReq
@@ -160,7 +251,11 @@ function tumblrParse(tumblr_json_data, item) {
     }
 }
 
-function tumblrPostParse(json_data, property, photo_parse, html_strip) {
+function html_strip(html_to_strip) {
+    return jQuery('<p>' + html_to_strip + '</p>').text();
+}
+
+function tumblrPostParse(json_data, property, photo_parse) {
     var RETURN_VALUE = [];
     try {
         $(json_data.posts).each(function(index, value) {
@@ -169,12 +264,7 @@ function tumblrPostParse(json_data, property, photo_parse, html_strip) {
                     RETURN_VALUE.push(val.photos[0].original_size.url);
                 });
             } else {
-                if (html_strip) {
-                    var bare_text = jQuery('<p>' + value[property] + '</p>').text();
-                    RETURN_VALUE.push(bare_text);
-                } else {
-                    RETURN_VALUE.push(value[property]);
-                }
+                RETURN_VALUE.push(value[property]);
             }
         });
     } catch (err) {} finally {
