@@ -1,10 +1,10 @@
 /*
-*
-*TITLE: Apiheap.js : jQuery Library 
-*AUTHOR: Tash-had Saqif | tash-had.com 
-*PROJECT: tash-had.github.io/apiheapjs 
-*
-*/
+ *
+ *TITLE: Apiheap.js : JavaScript Library 
+ *AUTHOR: Tash-had Saqif | tash-had.com 
+ *PROJECT: tash-had.github.io/apiheapjs 
+ *
+ */
 
 isUndefined = function(value) {
     if (typeof(value) === 'undefined' || value === null || value === 'null' || value === undefined) {
