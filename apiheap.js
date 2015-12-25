@@ -349,5 +349,3 @@ function preventDuplicate(testValue, testArray) {
 function pageToken(json_data) {
     return json_data.responseJSON.nextPageToken;
 }
-
-
