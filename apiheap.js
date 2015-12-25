@@ -1,3 +1,11 @@
+/*
+*
+*TITLE: Apiheap.js : jQuery Library 
+*AUTHOR: Tash-had Saqif | tash-had.com 
+*PROJECT: tash-had.github.io/apiheapjs 
+*
+*/
+
 isUndefined = function(value) {
     if (typeof(value) === 'undefined' || value === null || value === 'null' || value === undefined) {
         return true;
@@ -180,6 +188,33 @@ function apiheap(source, key) {
                 errorHandle("error| LOG:" + err + " ..." + "youtube request error");
             }
         }
+    } else if (SOURCE_ID === "openweathermap") {
+        this.SOURCE_KEY = key;
+        this.weather = function(city, custom) {
+            this.CITY = city;
+            this.CUSTOM = custom;
+
+            if (isUndefined(this.CUSTOM)) {
+                if (isUndefined(this.CITY)) {
+                    errorHandle("openweathermap error: missing perams");
+                } else {
+                    this.FINAL_URL = "http://api.openweathermap.org/data/2.5/weather?q=" + this.CITY + "&appid=" + this.SOURCE_KEY;
+                }
+            } else {
+                this.FINAL_URL = "http://api.openweathermap.org/data/2.5/weather?" + this.CUSTOM + "&appid=" + this.SOURCE_KEY;
+            }
+            try {
+                this.RESPONSE = $.ajax({
+                    url: this.FINAL_URL,
+                    dataType: 'json',
+                    type: 'GET',
+                    cache: false
+                });
+            } catch (err) {
+                errorHandle("openweathermap request error. LOG| " + err);
+            }
+        }
+
     } else {
         errorHandle("error| LOG: invalid source");
     }
@@ -300,7 +335,7 @@ function youtubeParse(query_array, item) {
                             break;
 
                         case "vid_thumbnails":
-                            RETURN_VALUE.push(value.snippet.thumbnails.high);
+                            RETURN_VALUE.push(value.snippet.thumbnails.high.url);
                             break;
 
                         case "chan_links":
@@ -325,6 +360,21 @@ function youtubeParse(query_array, item) {
             errorHandle("youtube parse error");
         } finally {
             return RETURN_VALUE;
+        }
+    }
+}
+
+function weatherParse(json_data, item) {
+    var weather_json_data = json_data;
+    var itemReq = item;
+
+    if (isUndefined(itemReq)) {
+        return weather_json_data.responseJSON;
+    } else {
+        if (itemReq === "weather") {
+            return weather_json_data.responseJSON[itemReq][0].description;
+        } else {
+            return weather_json_data.responseJSON[itemReq];
         }
     }
 }
