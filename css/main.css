@@ -1,12 +1,12 @@
 #exampleContents{
 	font-size: 1.3em;
 	padding-left: 2%;
+
 }
 #dlButton{
 	font-size: 0.35em;
 	padding: 1% 4% 4% 4% !important;
 	background-color: #1976D2;
-	font-weight: lighter;
 }
 .cardBtn{
 	color: white !important;

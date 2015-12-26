@@ -62,7 +62,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12">
-                    <h2 class="center header text_h2"> apiheap.js is a JavaScript library that lets you make <span class="span_h2">REST requests</span> in<span class="span_h2"> under five lines </span>of code.</h2>
+                    <h2 class="center header text_h2"> apiheap.js is a JavaScript library that lets you parse <span class="span_h2">REST requests</span> in<span class="span_h2"> under five lines </span>of code.</h2>
                 </div>
                 <div class="col s12 m4 l4">
                     <div class="center promo promo-example">
@@ -75,7 +75,7 @@
                     <div class="center promo promo-example">
                         <i class="mdi-action-get-app"></i>
                         <h5 class="promo-caption">Lightweight</h5>
-                        <p class="light center">Apiheap.js is only 6.21 kilobytes in size. Make quick and powerful requests, without compromising performance.</p>
+                        <p class="light center">Apiheap.js is only 6.23 kilobytes in size. Make quick and powerful requests, without compromising performance.</p>
                     </div>
                 </div>
                 <div class="col s12 m4 l4">
@@ -106,15 +106,15 @@
             </div>
                             <div class="card" id="setupId">
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4" onclick="moreText('#setupId');">Setup <i class="mdi-navigation-more-vert right"></i></span><p>To use apiheap.js, include it after your <code class="language-html">&lt;/body&gt;</code> tag. Note that apiheap.js requires jQuery to function.</p>
+                        <span class="card-title activator grey-text text-darken-4" onclick="moreText('#setupId', '750px');">Setup <i class="mdi-navigation-more-vert right"></i></span><p>To use apiheap.js, include it after your <code class="language-html">&lt;/body&gt;</code> tag. Note that apiheap.js requires jQuery to function.</p>
                         <pre><code class="language-html">&lt;script src="https://code.jquery.com/jquery-2.1.4.min.js"&gt;&lt;/script&gt;
 &lt;script src="js/apiheap.min.js"&gt;&lt;/script&gt;</code></pre>
                     <p>If you prefer, you can also use apiheap.js through a CDN.</p>
                     <pre><code class="language-html">&lt;script src="http://www.ucarecdn.com/e1523426-7a45-4d26-9b6e-78cb79c15cbb/apiheapmin.js"&gt;&lt;/script&gt;</code></pre>
-                        <p><button onclick="moreText('#setupId');" class="activator waves-effect waves-light btn blue cardBtn">How It Works</button><a class="waves-effect waves-light btn white" href="http://www.ucarecdn.com/e1523426-7a45-4d26-9b6e-78cb79c15cbb/apiheapmin.js">Get apiheap.js</a></p>
+                        <p><button onclick="moreText('#setupId', '750px');" class="activator waves-effect waves-light btn blue cardBtn">How It Works</button><a class="waves-effect waves-light btn white" href="http://www.ucarecdn.com/e1523426-7a45-4d26-9b6e-78cb79c15cbb/apiheapmin.js">Get apiheap.js</a></p>
                     </div>
                     <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4" onclick="moreText('#setupId');">How It Works <i class="mdi-navigation-close right"></i></span> .
+                        <span class="card-title grey-text text-darken-4" onclick="lessText('#setupId');">How It Works <i class="mdi-navigation-close right"></i></span> .
                         <p>To make a REST request using apiheap.js, make an object for apiheap, and in the parameters, specify which of the supported platforms you'd like to make a request to, and an API Key/ID if required. <b>Currently, apiheap.js supports Bitly, Tumblr, Imgur, Reddit, YouTube and OpenWeatherMap requests. All require an API Key or ID except Reddit, in which case the second param can be left blank.</b> Also, optionally create a variable (myData) for future use. <pre><code class="language-javascript">var myObj = new apiheap("imgur", "IMGUR_CLIENT_ID"), myData;</code></pre>Next, use your object to call the method for the platform you are making a request to. The parameters for this method vary for each platform, and you can read more about them by reading the details for the platform below. In all cases, the parameters will require details about your request. For instance, the Imgur example below can take three parameters;tag_name, opt_params, and is_topic, which mean the tag to search in, any specifics for the request, and whether or not you are requesting a topic.<pre><code class="language-javascript">var myObj = new apiheap("imgur", "IMGUR_CLIENT_ID"), myData;
 myObj.imgur("Awesome", "top/all", true); //Look in topic 'Awesome', search top of alltime, request is a topic.</code></pre>After the aforementioned code has been executed, through either a function or a page load, your request has been made! <b>Your data will be in myObj.RESPONSE. You can manipulate or use the data in any way that you chose, or, you can optionally use one of the functions included with apiheap.js, to parse it.</b> In almost all cases, the function to parse data takes two parameters; the response, and the item you want. imgurParse however, takes three parameters; the response, the item you want, and whether or not the request was for a topic. In this example, the function imgurParse is being used to retrieve an array of links for images fetched from a request to the topic 'Awesome.' Remember to write this line of code inside some function that you can call after the previous lines of code have surely executed.<pre><code class="language-javascript">
 var myObj = new apiheap("imgur", "IMGUR_CLIENT_ID"), myData;
@@ -127,7 +127,7 @@ function myFunction() {
                 </div>
                 <div class="card" id="bitlyId">
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Bitly</span>
+                        <span class="card-title grey-text text-darken-4">Bitly</span>
                         <pre><code class = "language-javascript"> //When myFunction() is triggered, bitlyLink will hold a short link for "https://google.ca"
 var bitlyObj = new apiheap("bitly", "MY_AUTH_TOKEN"),bitlyLink;
 bitlyObj.bitly("https://google.ca");
@@ -139,17 +139,17 @@ function myFunction() {
                 </div>
                 <div class="card" id="tumblrId">
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Tumblr <i class="mdi-navigation-more-vert right"></i></span>
+                        <span class="card-title activator grey-text text-darken-4" onclick="moreText('#tumblrId', '615px')">Tumblr <i class="mdi-navigation-more-vert right"></i></span>
                         <pre><code class = "language-javascript">//When myFunction() is triggered, tumblrData will hold an array containing URL's of the post's fetched. 
 var tumblrObj = new apiheap("tumblr", "MY_TUMBLR_KEY"), tumblrData;
 tumblrObj.tumblr("tumblrblog.tumblr.com");
 function myFunction() {
     tumblrData = tumblrParse(tumblrObj.RESPONSE, "post_url"); console.log(tumblrData);} 
 </code></pre >
-                        <p><a href="https://www.tumblr.com/oauth/apps" target="_blank">Get Tumblr Key</a></p>
+                        <p><button onclick="moreText('#tumblrId', '615px');" class="activator waves-effect waves-light btn blue cardBtn">Details</button><a class="waves-effect waves-light btn white" href="https://www.tumblr.com/oauth/apps" target="_blank">Get Tumblr Key</a></p>
                     </div>
                     <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span> .
+                        <span class="card-title grey-text text-darken-4" onclick="lessText('#tumblrId')">Tumblr Details <i class="mdi-navigation-close right"></i></span><p><h5>myObj.tumblr()</h5><ul><li>This method can take three parameters, and the first is required.</li><li><b>Format:</b> <code class="language-javascript">myObj.tumblr("BLOG_URL", "POST_TYPE", "REQUEST_PARAMS")</code></li><li><b>BLOG_URL: </b>Eg. "myblog.tumblr.com" or "myblog.com"</li><li><b>POST_TYPE: </b>If left blank or null, the request will fetch all post types. <a href="http://49.media.tumblr.com/114a5264beba74f61afa73598bfc6713/tumblr_njb38qfFgb1qz8q0ho1_1280.gif" target="_blank">Click here for a full list of post types.</a></li><li><b>REQUEST_PARAMS: </b>If left blank, the request will fetch the last 20 posts from the blog. Options include "tag", "limit" among others. <a href="https://www.tumblr.com/docs/en/api/v2#posts" target="_blank">Click here for a full list.</a></li><li>After this is executed, your response will be in myObj.RESPONSE. You can use the data raw, or parse it using the function below.</li></ul><h5>tumblrParse()</h5><ul><li>This method takes two parameters; the first is required.</li><li><b>Format: </b><code class="language-javascript">myData = myObj.tumblrParse(MY_RESPONSE, "MY_ITEM");</code></li><li><b>MY_RESPONSE: </b>the response from your request. After a request is made, the response is stored under myObj.RESPONSE. </li><li><b>MY_ITEM: </b>the item you would like. If left blank or null, the function will return an array of posts from the request, which you can use. Item requests vary for each post. For example, audio posts will have properties like "track_name", or "plays", both of which photo posts do not have. When making the request in the myObj.tumblr() method, if you specified a POST_TYPE, this will not be an issue since all the posts in the response will be of the same type. However, if you did not specify a POST_TYPE, the post types in the response can vary. The tumblrParse() method returns an array of the item you requested from each post in the response (parameter 1). If you sent in a response with varying POST_TYPES, and requested an item that some posts do not have, the array will have an undefined value pushed to it. Posts that do have the requested item, will have the value of that item pushed to the the array as usual. A full chart of properties of the response, and properties for each type of post can be seen <a href="https://www.tumblr.com/docs/en/api/v2#m-posts-responses" target="_blank">here.</a> (Everything under the "Response Field" columns can be used for the MY_ITEM parameter). A chart of properties common to all posts can be seen under the 'Responses' section <a href="https://www.tumblr.com/docs/en/api/v2#blog-submissions">here.</a> For information about the blog, you can set this parameter to "blog_info", and you will recieve an object containing the info. You can also set this as "photos_url", and get an array of direct links to images in all photo posts from the response.</li></ul></p>
                     </div>
                 </div>
                 <div class="card" id="imgurId">
