@@ -29,14 +29,15 @@
                     <ul class="right hide-on-med-and-down">
                         <li><a href="#intro">About</a></li>
                         <li><a href="#usage">Usage</a></li>
-                        <li><a href="#team">Examples</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="https://github.com/tash-had/apiheapjs" target="
+                        _blank">GitHub</a></li>
+                        <li><a href="http://tash-had.com" target="_blank">Contact</a></li>
                     </ul>
                     <ul id="nav-mobile" class="side-nav">
                         <li><a href="#intro">About</a></li>
                         <li><a href="#work">Usage</a></li>
-                        <li><a href="#team">Examples</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="https://github.com/tash-had/apiheapjs" target="_blank">GitHub</a></li>
+                        <li><a href="http://tash-had.com" target="_blank">Contact</a></li>
                     </ul>
                     <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                 </div>
@@ -53,7 +54,7 @@
 					<b>lightweight</b>
 					<b>open source</b>
 				</span>
-                <span><br><br><a class="waves-effect waves-light btn dark-blue" id="dlButton">Download</a></span>
+                <span><br><br><a class="waves-effect waves-light btn dark-blue" id="dlButton" href="http://www.ucarecdn.com/e1523426-7a45-4d26-9b6e-78cb79c15cbb/apiheapmin.js">Download</a></span>
 			</h1>
         </div>
     </div>
@@ -109,28 +110,31 @@
                         <pre><code class="language-html">&lt;script src="https://code.jquery.com/jquery-2.1.4.min.js"&gt;&lt;/script&gt;
 &lt;script src="js/apiheap.min.js"&gt;&lt;/script&gt;</code></pre>
                     <p>If you prefer, you can also use apiheap.js through a CDN.</p>
-                    <pre><code class="language-html">&lt;script src="http://www.ucarecdn.com/773d2a73-017e-4b47-add4-967d96fa6a61/apiheapmin.js"&gt;&lt;/script&gt;</code></pre>
-                        <p><a href="http://www.ucarecdn.com/773d2a73-017e-4b47-add4-967d96fa6a61/apiheapmin.js">Get apiheap.js</a></p>
+                    <pre><code class="language-html">&lt;script src="http://www.ucarecdn.com/e1523426-7a45-4d26-9b6e-78cb79c15cbb/apiheapmin.js"&gt;&lt;/script&gt;</code></pre>
+                        <p><button onclick="moreText('#setupId');" class="activator waves-effect waves-light btn blue cardBtn">How It Works</button><a class="waves-effect waves-light btn white" href="http://www.ucarecdn.com/e1523426-7a45-4d26-9b6e-78cb79c15cbb/apiheapmin.js">Get apiheap.js</a></p>
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4" onclick="moreText('#setupId');">How It Works <i class="mdi-navigation-close right"></i></span> .
                         <p>To make a REST request using apiheap.js, make an object for apiheap, and in the parameters, specify which of the supported platforms you'd like to make a request to, and an API Key/ID if required. <b>Currently, apiheap.js supports Bitly, Tumblr, Imgur, Reddit, YouTube and OpenWeatherMap requests. All require an API Key or ID except Reddit, in which case the second param can be left blank.</b> Also, optionally create a variable (myData) for future use. <pre><code class="language-javascript">var myObj = new apiheap("imgur", "IMGUR_CLIENT_ID"), myData;</code></pre>Next, use your object to call the method for the platform you are making a request to. The parameters for this method vary for each platform, and you can read more about them by reading the details for the platform below. In all cases, the parameters will require details about your request. For instance, the Imgur example below can take three parameters;tag_name, opt_params, and is_topic, which mean the tag to search in, any specifics for the request, and whether or not you are requesting a topic.<pre><code class="language-javascript">var myObj = new apiheap("imgur", "IMGUR_CLIENT_ID"), myData;
-myObj.imgur("Awesome", "top/all", true); //Look in topic 'Awesome', search top of alltime, request is a topic.</code></pre>After the aforementioned code has been executed, through either a function or a page load, your request has been made! <b>Your data will be in myObj.RESPONSE. You can manipulate or use the data in any way that you chose, or, you can optionally use one of the functions included with apiheap.js, to parse it.</b> In almost all cases, the function to parse data takes two parameters; the response, and the item you want. Imgur however, take three parameters; the response, the item you want, In this example, the function imgurParse is being used to retrieve an array of links for all the images fetched.<pre><code class="language-javascript">myData = imgurParse(imgurObj.RESPONSE, "link", true);</code></pre></p>
+myObj.imgur("Awesome", "top/all", true); //Look in topic 'Awesome', search top of alltime, request is a topic.</code></pre>After the aforementioned code has been executed, through either a function or a page load, your request has been made! <b>Your data will be in myObj.RESPONSE. You can manipulate or use the data in any way that you chose, or, you can optionally use one of the functions included with apiheap.js, to parse it.</b> In almost all cases, the function to parse data takes two parameters; the response, and the item you want. imgurParse however, takes three parameters; the response, the item you want, and whether or not the request was for a topic. In this example, the function imgurParse is being used to retrieve an array of links for images fetched from a request to the topic 'Awesome.' Remember to write this line of code inside some function that you can call after the previous lines of code have surely executed.<pre><code class="language-javascript">
+var myObj = new apiheap("imgur", "IMGUR_CLIENT_ID"), myData;
+myObj.imgur("Awesome", "top/all", true); //Look in topic 'Awesome', search top of alltime, request is a topic.
+function myFunction() {
+    myData = imgurParse(imgurObj.RESPONSE, "link", true); //Passing in response (imgurObj.RESPONSE), the item we want (link), and if the request was a topic (true).
+    console.log(myData); } //Use the data (array)
+    </code></pre></p>
                     </div>
                 </div>
                 <div class="card" id="bitlyId">
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Bitly <i class="mdi-navigation-more-vert right"></i></span>
+                        <span class="card-title activator grey-text text-darken-4">Bitly</span>
                         <pre><code class = "language-javascript"> //When myFunction() is triggered, bitlyLink will hold a short link for "https://google.ca"
 var bitlyObj = new apiheap("bitly", "MY_AUTH_TOKEN"),bitlyLink;
 bitlyObj.bitly("https://google.ca");
 function myFunction() {
     bitlyLink = bitlyParse(bitlyObj.RESPONSE); console.log(bitlyLink);} 
 </code></pre >
-                        <p><a href="https://bitly.com/a/oauth_apps" target="_blank">Get Bitly Token</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span> .
+                        <p><a class="waves-effect waves-light btn white" target="_blank" href="https://bitly.com/a/oauth_apps">Get Bitly Token</a></p>
                     </div>
                 </div>
                 <div class="card" id="tumblrId">

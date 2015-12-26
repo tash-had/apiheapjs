@@ -2,7 +2,7 @@ var count=0;
 function moreText(id){
 	if(count==0){
 		$(id).css({
-			"height" : "500px"
+			"height" : "750px"
 		});
 		count=count+1;
 	}else{
