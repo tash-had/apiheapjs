@@ -5,7 +5,6 @@
  *PROJECT: tash-had.github.io/apiheapjs 
  *
  */
-
 isUndefined = function(value) {
     if (typeof(value) === 'undefined' || value === null || value === 'null' || value === undefined) {
         return true;
@@ -87,7 +86,6 @@ function apiheap(source, key) {
             }
         }
     } else if (SOURCE_ID === "bitly") {
-        this.SHORT_URL;
         this.SOURCE_KEY = key;
         var bitly_frame = "https://api-ssl.bitly.com/v3/shorten?access_token=" + this.SOURCE_KEY + "&";
         this.bitly = function(link) {
@@ -254,18 +252,18 @@ function tumblrParse(tumblr_json_data, item) {
     }
 }
 
-function imgurParse(json_data, itemReq, tag) {
+function imgurParse(json_data, itemReq, topic) {
     var RETURN_VALUE = [];
     var imgur_api_response = json_data;
     if (isUndefined(itemReq)) {
-        if (tag) {
+        if (!topic || isUndefined(topic)) {
             return imgur_api_response.responseJSON.data.items;
         } else {
             return imgur_api_response.responseJSON.data;
         }
     } else {
         try {
-            if (tag) {
+            if (!topic || isUndefined(topic)) {
                 $(imgur_api_response.responseJSON.data.items).each(function(index, value) {
                     $(value).each(function(idx, val) {
                         RETURN_VALUE.push(val[itemReq]);
