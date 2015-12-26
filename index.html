@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#2196F3">
     <title>apiheap.js | Easy REST Requests</title>
-
     <!-- CSS  -->
     <link href="min/plugin-min.css" type="text/css" rel="stylesheet">
-    <link href="min/custom-min.css" type="text/css" rel="stylesheet" >
+    <link href="min/custom-min.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/prism.css">
 </head>
-<body id="top" class="scrollspy">
 
+<body id="top" class="scrollspy">
     <!-- Pre Loader -->
     <div id="loader-wrapper">
         <div id="loader"></div>
-
         <div class="loader-section section-left"></div>
         <div class="loader-section section-right"></div>
-
     </div>
-
     <!--Navigation-->
     <div class="navbar-fixed">
         <nav id="nav_f" class="default_color" role="navigation">
@@ -30,44 +28,42 @@
                     <a href="#" id="logo-container" class="brand-logo">apiheap.js</a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="#intro">About</a></li>
-                        <li><a href="#work">Usage</a></li>
+                        <li><a href="#usage">Usage</a></li>
                         <li><a href="#team">Examples</a></li>
                         <li><a href="#contact">Contact</a></li>
-                        <li><a href="https://github.com/joashp/material-design-template" target="_blank">Download</a></li>
                     </ul>
                     <ul id="nav-mobile" class="side-nav">
                         <li><a href="#intro">About</a></li>
                         <li><a href="#work">Usage</a></li>
                         <li><a href="#team">Examples</a></li>
                         <li><a href="#contact">Contact</a></li>
-                        <li><a href="https://github.com/joashp/material-design-template" target="_blank">Download</a></li>
                     </ul>
                     <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                 </div>
             </div>
         </nav>
     </div>
-
     <!--Hero-->
     <div class="section no-pad-bot" id="index-banner">
         <div class="container">
             <h1 class="text_h center header cd-headline letters type">
-                <span>apiheap.js</span> 
-                <span class="cd-words-wrapper waiting">
-                    <b class="is-visible">easy</b>
-                    <b>lightweight</b>
-                    <b>open source</b>
-                </span>
-            </h1>
+				<span>apiheap.js</span> 
+				<span class="cd-words-wrapper waiting">
+					<b class="is-visible">easy</b>
+					<b>lightweight</b>
+					<b>open source</b>
+				</span>
+                <span><br><br><a class="waves-effect waves-light btn dark-blue" id="dlButton">Download</a></span>
+			</h1>
         </div>
     </div>
     <div id="intro" class="section scrollspy">
         <div class="container">
             <div class="row">
-                <div  class="col s12">
+                <div class="col s12">
                     <h2 class="center header text_h2"> apiheap.js is a JavaScript library that lets you make <span class="span_h2">REST requests</span> in<span class="span_h2"> under five lines </span>of code.</h2>
                 </div>
-                <div  class="col s12 m4 l4">
+                <div class="col s12 m4 l4">
                     <div class="center promo promo-example">
                         <i class="mdi-action-done"></i>
                         <h5 class="promo-caption">Easy.</h5>
@@ -78,7 +74,7 @@
                     <div class="center promo promo-example">
                         <i class="mdi-action-get-app"></i>
                         <h5 class="promo-caption">Lightweight</h5>
-                        <p class="light center">Apiheap.js is only 6.21 kilobytes in size. Make REST requests to multiple platforms, without compromising performance.</p>
+                        <p class="light center">Apiheap.js is only 6.21 kilobytes in size. Make quick and powerful requests, without compromising performance.</p>
                     </div>
                 </div>
                 <div class="col s12 m4 l4">
@@ -91,297 +87,145 @@
             </div>
         </div>
     </div>
-
     <!--Work-->
-    <div class="section scrollspy" id="work">
+    <div class="section scrollspy" id="usage">
         <div class="container">
-            <h2 class="header text_b">Work </h2>
+            <h2 class="header text_b">Usage </h2>
             <div class="row">
-                <div class="col s12 m4 l4">
-                    <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="img/project1.jpg">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                            <p><a href="#">Project link</a></p>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                            <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                        </div>
+            <div id="exampleContents">
+            	<ul>
+                    <li><a href="javascript:void(0)" onclick="goToByScroll('setupId');">Setup</a></li>
+            		<li><a href="javascript:void(0)" onclick="goToByScroll('bitlyId');">Bitly</a></li>
+                    <li><a href="javascript:void(0)" onclick="goToByScroll('tumblrId');">Tumblr</a></li>
+                    <li><a href="javascript:void(0)" onclick="goToByScroll('imgurId');">Imgur</a></li>
+                    <li><a href="javascript:void(0)" onclick="goToByScroll('reditId');">Reddit</a></li>
+                    <li><a href="javascript:void(0)" onclick="goToByScroll('youtubeId');">YouTube</a></li>
+                    <li><a href="javascript:void(0)" onclick="goToByScroll('weatherId');">OpenWeatherMap</a></li>
+            	</ul>
+            </div>
+                            <div class="card" id="setupId">
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4" onclick="moreText('#setupId');">Setup <i class="mdi-navigation-more-vert right"></i></span><p>To use apiheap.js, include it after your <code class="language-html">&lt;/body&gt;</code> tag. Note that apiheap.js requires jQuery to function.</p>
+                        <pre><code class="language-html">&lt;script src="https://code.jquery.com/jquery-2.1.4.min.js"&gt;&lt;/script&gt;
+&lt;script src="js/apiheap.min.js"&gt;&lt;/script&gt;</code></pre>
+                    <p>If you prefer, you can also use apiheap.js through a CDN.</p>
+                    <pre><code class="language-html">&lt;script src="http://www.ucarecdn.com/773d2a73-017e-4b47-add4-967d96fa6a61/apiheapmin.js"&gt;&lt;/script&gt;</code></pre>
+                        <p><a href="http://www.ucarecdn.com/773d2a73-017e-4b47-add4-967d96fa6a61/apiheapmin.js">Get apiheap.js</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4" onclick="moreText('#setupId');">How It Works <i class="mdi-navigation-close right"></i></span> .
+                        <p>To make a REST request using apiheap.js, make an object for apiheap, and in the parameters, specify which of the supported platforms you'd like to make a request to, and an API Key/ID if required. <b>Currently, apiheap.js supports Bitly, Tumblr, Imgur, Reddit, YouTube and OpenWeatherMap requests. All require an API Key or ID except Reddit, in which case the second param can be left blank.</b> Also, optionally create a variable (myData) for future use. <pre><code class="language-javascript">var myObj = new apiheap("imgur", "IMGUR_CLIENT_ID"), myData;</code></pre>Next, use your object to call the method for the platform you are making a request to. The parameters for this method vary for each platform, and you can read more about them by reading the details for the platform below. In all cases, the parameters will require details about your request. For instance, the Imgur example below can take three parameters;tag_name, opt_params, and is_topic, which mean the tag to search in, any specifics for the request, and whether or not you are requesting a topic.<pre><code class="language-javascript">var myObj = new apiheap("imgur", "IMGUR_CLIENT_ID"), myData;
+myObj.imgur("Awesome", "top/all", true); //Look in topic 'Awesome', search top of alltime, request is a topic.</code></pre>After the aforementioned code has been executed, through either a function or a page load, your request has been made! <b>Your data will be in myObj.RESPONSE. You can manipulate or use the data in any way that you chose, or, you can optionally use one of the functions included with apiheap.js, to parse it.</b> In almost all cases, the function to parse data takes two parameters; the response, and the item you want. Imgur however, take three parameters; the response, the item you want, In this example, the function imgurParse is being used to retrieve an array of links for all the images fetched.<pre><code class="language-javascript">myData = imgurParse(imgurObj.RESPONSE, "link", true);</code></pre></p>
                     </div>
                 </div>
-                <div class="col s12 m4 l4">
-                    <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="img/project2.jpeg">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                            <p><a href="#">Project link</a></p>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                            <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                        </div>
+                <div class="card" id="bitlyId">
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Bitly <i class="mdi-navigation-more-vert right"></i></span>
+                        <pre><code class = "language-javascript"> //When myFunction() is triggered, bitlyLink will hold a short link for "https://google.ca"
+var bitlyObj = new apiheap("bitly", "MY_AUTH_TOKEN"),bitlyLink;
+bitlyObj.bitly("https://google.ca");
+function myFunction() {
+    bitlyLink = bitlyParse(bitlyObj.RESPONSE); console.log(bitlyLink);} 
+</code></pre >
+                        <p><a href="https://bitly.com/a/oauth_apps" target="_blank">Get Bitly Token</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span> .
                     </div>
                 </div>
-                <div class="col s12 m4 l4">
-                    <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="img/project3.png">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                            <p><a href="#">Project link</a></p>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                            <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                        </div>
+                <div class="card" id="tumblrId">
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Tumblr <i class="mdi-navigation-more-vert right"></i></span>
+                        <pre><code class = "language-javascript">//When myFunction() is triggered, tumblrData will hold an array containing URL's of the post's fetched. 
+var tumblrObj = new apiheap("tumblr", "MY_TUMBLR_KEY"), tumblrData;
+tumblrObj.tumblr("tumblrblog.tumblr.com");
+function myFunction() {
+    tumblrData = tumblrParse(tumblrObj.RESPONSE, "post_url"); console.log(tumblrData);} 
+</code></pre >
+                        <p><a href="https://www.tumblr.com/oauth/apps" target="_blank">Get Tumblr Key</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span> .
                     </div>
                 </div>
-                <div class="col s12 m4 l4">
-                    <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="img/project4.jpg">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                            <p><a href="#">Project link</a></p>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                            <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                        </div>
+                <div class="card" id="imgurId">
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Imgur <i class="mdi-navigation-more-vert right"></i></span>
+                        <pre><code class = "language-javascript">//When myFunction() is triggered, imgurData will hold an array of links from the fetched data.  
+var imgurObj = new apiheap("imgur", "MY_CLIENT_ID"), imgurData;
+imgurObj.imgur("cats", "top/all");
+function myFunction() {
+    imgurData = imgurParse(imgurObj.RESPONSE, "link", true); console.log(imgurData); }
+</code></pre >
+                        <p><a href="https://api.imgur.com/oauth2/addclient" target="_blank">Get Imgur Anonymous Usage ID</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span> .
                     </div>
                 </div>
-                <div class="col s12 m4 l4">
-                    <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="img/project5.png">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                            <p><a href="#">Project link</a></p>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                            <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                        </div>
+
+                <div class="card" id="redditId">
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Reddit <i class="mdi-navigation-more-vert right"></i></span>
+                        <pre><code class = "language-javascript">//When myFunction() is triggered, redditData will hold an array of URL's from post's fetched.   
+var redditObj = new apiheap("reddit"), redditData;
+redditObj.reddit("funny", "new", "t=week&limit=50");
+function myFunction() {
+    redditData = redditParse(redditObj.RESPONSE, "url"); console.log(redditData);} 
+</code></pre >
+                    </div>
+
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span> .
                     </div>
                 </div>
-                <div class="col s12 m4 l4">
-                    <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="img/project6.jpeg">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                            <p><a href="#">Project link</a></p>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                            <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                        </div>
+                                <div class="card" id="youtubeId">
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">YouTube <i class="mdi-navigation-more-vert right"></i></span>
+                        <pre><code class = "language-javascript">//When myFunction() is triggered, ytData will hold an array of YouTube links from video's fetched.  
+var ytObj = new apiheap("youtube", "MY_API_KEY"), ytData=[];
+ytObj.youtube("search", "snippet", "q=cat videos");
+function myFunction() {
+    ytData = youtubeParse(ytObj.RESPONSE, "vid_links"); console.log(ytData);}
+</code></pre >
+                        <p><a href="https://developers.google.com/youtube/registering_an_application" target="_blank">Get YouTube API Key</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span> .
+                    </div>
+                </div>
+                <div class="card" id="weatherId">
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">OpenWeatherMap <i class="mdi-navigation-more-vert right"></i></span>
+                        <pre><code class = "language-javascript">//When myFunction() is triggered, weatherData will hold an object with information from the response.  
+var weatherObj = new apiheap("openweathermap", "MY_API_KEY"), weatherData;
+weatherObj.weather("toronto");
+function myFunction() {
+    weatherData = weatherParse(weatherObj.RESPONSE, "main"); console.log(weatherData);}
+</code></pre >
+                        <p><a href="http://home.openweathermap.org/" target="_blank">Get OpenWeatherMap API Key</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span> .
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <!--Parallax-->
-    <div class="parallax-container">
+    <div class="parallax-container" id="examples">
         <div class="parallax"><img src="img/parallax1.png"></div>
     </div>
+    <script src="min/plugin-min.js"></script>
+    <script src="min/custom-min.js"></script>
+    <script type="text/javascript" src="js/prism.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript">
+            function goToByScroll(id) {
+            $('html,body').animate({
+                scrollTop: $("#" + id).offset().top
+            }, 'slow');
+        }</script>
+</body>
 
-    <!--Team-->
-    <div class="section scrollspy" id="team">
-        <div class="container">
-            <h2 class="header text_b"> Our Team </h2>
-            <div class="row">
-                <div class="col s12 m3">
-                    <div class="card card-avatar">
-                        <div class="waves-effect waves-block waves-light">
-                            <img class="activator" src="img/avatar1.png">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Flash <br/>
-                                <small><em><a class="red-text text-darken-1" href="#">CEO</a></em></small></span>
-                                <p>
-                                    <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
-                                        <i class="fa fa-facebook-square"></i>
-                                    </a>
-                                    <a class="blue-text text-lighten-2" href="https://twitter.com/im_joash">
-                                        <i class="fa fa-twitter-square"></i>
-                                    </a>
-                                    <a class="blue-text text-lighten-2" href="https://plus.google.com/u/0/+JoashPereira">
-                                        <i class="fa fa-google-plus-square"></i>
-                                    </a>
-                                    <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/joashp">
-                                        <i class="fa fa-linkedin-square"></i>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s12 m3">
-                        <div class="card card-avatar">
-                            <div class="waves-effect waves-block waves-light">
-                                <img class="activator" src="img/avatar2.png">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">Cat Woman<br/>
-                                    <small><em><a class="red-text text-darken-1" href="#">Designer</a></em></small>
-                                </span>
-                                <p>
-                                    <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
-                                        <i class="fa fa-facebook-square"></i>
-                                    </a>
-                                    <a class="blue-text text-lighten-2" href="https://twitter.com/im_joash">
-                                        <i class="fa fa-twitter-square"></i>
-                                    </a>
-                                    <a class="blue-text text-lighten-2" href="https://plus.google.com/u/0/+JoashPereira">
-                                        <i class="fa fa-google-plus-square"></i>
-                                    </a>
-                                    <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/joashp">
-                                        <i class="fa fa-linkedin-square"></i>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s12 m3">
-                        <div class="card card-avatar">
-                            <div class="waves-effect waves-block waves-light">
-                                <img class="activator" src="img/avatar3.png">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">
-                                    Capt. America <br/>
-                                    <small><em><a class="red-text text-darken-1" href="#">CMO</a></em></small></span>
-                                    <p>
-                                        <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
-                                            <i class="fa fa-facebook-square"></i>
-                                        </a>
-                                        <a class="blue-text text-lighten-2" href="https://twitter.com/im_joash">
-                                            <i class="fa fa-twitter-square"></i>
-                                        </a>
-                                        <a class="blue-text text-lighten-2" href="https://plus.google.com/u/0/+JoashPereira">
-                                            <i class="fa fa-google-plus-square"></i>
-                                        </a>
-                                        <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/joashp">
-                                            <i class="fa fa-linkedin-square"></i>
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s12 m3">
-                            <div class="card card-avatar">
-                                <div class="waves-effect waves-block waves-light">
-                                    <img class="activator" src="img/avatar4.png">
-                                </div>
-                                <div class="card-content">
-                                    <span class="card-title activator grey-text text-darken-4">Robin<br/>
-                                        <small><em><a class="red-text text-darken-1" href="#">Developer</a></em></small></span>
-                                        <p>
-                                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
-                                                <i class="fa fa-facebook-square"></i>
-                                            </a>
-                                            <a class="blue-text text-lighten-2" href="https://twitter.com/im_joash">
-                                                <i class="fa fa-twitter-square"></i>
-                                            </a>
-                                            <a class="blue-text text-lighten-2" href="https://plus.google.com/u/0/+JoashPereira">
-                                                <i class="fa fa-google-plus-square"></i>
-                                            </a>
-                                            <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/joashp">
-                                                <i class="fa fa-linkedin-square"></i>
-                                            </a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--Footer-->
-                <footer id="contact" class="page-footer default_color scrollspy">
-                    <div class="container">  
-                        <div class="row">
-                            <div class="col l6 s12">
-                                <form class="col s12" action="contact.php" method="post">
-                                    <div class="row">
-                                        <div class="input-field col s6">
-                                            <i class="mdi-action-account-circle prefix white-text"></i>
-                                            <input id="icon_prefix" name="name" type="text" class="validate white-text">
-                                            <label for="icon_prefix" class="white-text">First Name</label>
-                                        </div>
-                                        <div class="input-field col s6">
-                                            <i class="mdi-communication-email prefix white-text"></i>
-                                            <input id="icon_email" name="email" type="email" class="validate white-text">
-                                            <label for="icon_email" class="white-text">Email-id</label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <i class="mdi-editor-mode-edit prefix white-text"></i>
-                                            <textarea id="icon_prefix2" name="message" class="materialize-textarea white-text"></textarea>
-                                            <label for="icon_prefix2" class="white-text">Message</label>
-                                        </div>
-                                        <div class="col offset-s7 s5">
-                                            <button class="btn waves-effect waves-light red darken-1" type="submit">Submit
-                                                <i class="mdi-content-send right white-text"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col l3 s12">
-                                <h5 class="white-text">joashpereira.com</h5>
-                                <ul>
-                                    <li><a class="white-text" href="http://www.joashpereira.com/">Home</a></li>
-                                    <li><a class="white-text" href="http://www.joashpereira.com/blog">Blog</a></li>
-                                </ul>
-                            </div>
-                            <div class="col l3 s12">
-                                <h5 class="white-text">Social</h5>
-                                <ul>
-                                    <li>
-                                        <a class="white-text" href="https://www.behance.net/joashp">
-                                            <i class="small fa fa-behance-square white-text"></i> Behance
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="white-text" href="https://www.facebook.com/joash.c.pereira">
-                                            <i class="small fa fa-facebook-square white-text"></i> Facebook
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="white-text" href="https://github.com/joashp">
-                                            <i class="small fa fa-github-square white-text"></i> Github
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="white-text" href="https://www.linkedin.com/in/joashp">
-                                            <i class="small fa fa-linkedin-square white-text"></i> Linkedin
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer-copyright default_color">
-                        <div class="container">
-                            Made by <a class="white-text" href="http://joashpereira.com">Joash Pereira</a>. Thanks to <a class="white-text" href="http://materializecss.com/">materializecss</a>
-                        </div>
-                    </div>
-                </footer>
-
-
-                <!--  Scripts-->
-                <script src="min/plugin-min.js"></script>
-                <script src="min/custom-min.js"></script>
-
-            </body>
-            </html>
+</html>
