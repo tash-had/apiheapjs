@@ -1,11 +1,1 @@
-function moreText(id, heightVal){
-	$(id).css({
-		"height" : heightVal
-	});
-}
-function lessText(id){
-	$(id).css({
-		"height" : "auto"
-	});
-	count = count-1;
-}
+function moreText(a,b){$(a).css({height:b})}function lessText(a){$(a).css({height:"auto"})}function runBitly(){bitlyLink=bitlyParse(bitlyObj.RESPONSE),console.log(bitlyLink),runLogMsg()}function runTumblr(){tumblrData=tumblrParse(tumblrObj.RESPONSE,"post_url"),console.log(tumblrData),runLogMsg()}function runImgur(){imgurData=imgurParse(imgurObj.RESPONSE,"link"),console.log(imgurData),runLogMsg()}function runReddit(){redditData=redditParse(redditObj.RESPONSE,"url"),console.log(redditData),runLogMsg()}function runYoutube(){ytData=youtubeParse(ytObj.RESPONSE,"vid_links"),console.log(ytData),runLogMsg()}function runWeather(){weatherData=weatherParse(weatherObj.RESPONSE,"main"),console.log(weatherData),runLogMsg()}function runLogMsg(){alertify.logPosition("bottom right"),alertify.success("Done! Open your console for results.")}var bitlyObj=new apiheap("bitly","970855848be23cc9cbb6b577b61c7b9cb3804830"),bitlyLink;bitlyObj.bitly("https://google.ca");var tumblrObj=new apiheap("tumblr","AR53KZcOUK8PYzyebMamkQYeMxMJ3CJwGes6L5Fhbw49LBlUB1"),tumblrData;tumblrObj.tumblr("myexampleblog.tumblr.com",null,"limit=50");var imgurObj=new apiheap("imgur","376b70f973bcd41"),imgurData;imgurObj.imgur("cats","top/all");var redditObj=new apiheap("reddit"),redditData;redditObj.reddit("funny","new","t=week&limit=50");var ytObj=new apiheap("youtube","AIzaSyCE1D-pcjpBzXa0iL60A4SUMDCgNS2uqy4"),ytData=[];ytObj.youtube("search","snippet","q=cat videos");var weatherObj=new apiheap("openweathermap","691da96255af43dbecc7d1e83907f7fd"),weatherData;weatherObj.weather("toronto");
