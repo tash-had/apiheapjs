@@ -224,8 +224,8 @@ function bitlyParse(bitly_json_data) {
 }
 
 function tumblrParse(tumblr_json_data, item) {
-    var tumblrResponse = tumblr_json_data.responseJSON.response;
-    var itemReq = item;
+    var tumblrResponse = tumblr_json_data.responseJSON.response,
+        itemReq = item;
     if (isUndefined(itemReq)) {
         return tumblrResponse.posts;
     } else {
@@ -253,8 +253,8 @@ function tumblrParse(tumblr_json_data, item) {
 }
 
 function imgurParse(json_data, itemReq, topic) {
-    var RETURN_VALUE = [];
-    var imgur_api_response = json_data;
+    var RETURN_VALUE = [],
+        imgur_api_response = json_data;
     if (isUndefined(itemReq)) {
         if (!topic || isUndefined(topic)) {
             return imgur_api_response.responseJSON.data.items;
@@ -283,9 +283,9 @@ function imgurParse(json_data, itemReq, topic) {
 }
 
 function redditParse(json_data, item) {
-    var RETURN_VALUE = [];
-    var reddit_json_data = json_data;
-    var itemReq = item;
+    var RETURN_VALUE = [],
+        reddit_json_data = json_data,
+        itemReq = item;
     try {
         if (isUndefined(itemReq)) {
             RETURN_VALUE = reddit_json_data.responseJSON.data.children;
@@ -305,9 +305,9 @@ function youtubeParse(query_array, item) {
     if (isUndefined(item)) {
         errorHandle("youtube parse error: you must request an item as a parameter");
     } else {
-        var youtube_data_array = query_array;
-        var itemReq = item;
-        var RETURN_VALUE = [];
+        var youtube_data_array = query_array,
+            itemReq = item,
+            RETURN_VALUE = [];
         try {
             $(youtube_data_array).each(function(idx, val) {
                 $(val.responseJSON.items).each(function(index, value) {
@@ -363,8 +363,8 @@ function youtubeParse(query_array, item) {
 }
 
 function weatherParse(json_data, item) {
-    var weather_json_data = json_data;
-    var itemReq = item;
+    var weather_json_data = json_data,
+        itemReq = item;
 
     if (isUndefined(itemReq)) {
         return weather_json_data.responseJSON;
