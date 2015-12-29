@@ -1,529 +1,79 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-    <meta name="theme-color" content="#2196F3" />
-    <title>
-        apiheap.js | Easy REST Requests
-    </title>
-    <link href="min/plugin-min.css" type="text/css" rel="stylesheet" />
-    <link href="min/custom-min.css" type="text/css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <link rel="stylesheet" type="text/css" href="css/prism.css" />
-    <link rel="stylesheet" type="text/css" href="css/alertify.css" />
-    <link rel="icon" type="img/png" href="favicon.png" />
-    <script type="text/javascript">
-        //<![CDATA[
-        (function(i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-        ga('create', 'UA-43160348-14', 'auto');
-        ga('send', 'pageview');
-        //]]>
-    </script>
-</head>
-
-<body id="top" class="scrollspy">
-    <div id="loader-wrapper">
-        <div id="loader"></div>
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div>
-    </div>
-    <div class="navbar-fixed">
-        <div class="container">
-            <div class="nav-wrapper">
-                <a href="javascript:void(0)" onclick="goToByScroll('index-banner')" id="logo-container" class="brand-logo" name="logo-container">apiheap.js</a>
-                <ul class="right hide-on-med-and-down">
-                    <li>
-                        <a href="#intro">About</a>
-                    </li>
-                    <li>
-                        <a href="#usage">Usage</a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/tash-had/apiheapjs" target=" _blank">GitHub</a>
-                    </li>
-                    <li>
-                        <a href="http://tash-had.com" target="_blank">Contact</a>
-                    </li>
-                </ul>
-                <ul id="nav-mobile" class="side-nav">
-                    <li>
-                        <a href="#intro">About</a>
-                    </li>
-                    <li>
-                        <a href="#work">Usage</a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/tash-had/apiheapjs" target="_blank">GitHub</a>
-                    </li>
-                    <li>
-                        <a href="http://tash-had.com" target="_blank">Contact</a>
-                    </li>
-                </ul>
-                <a href="#" data-activates="nav-mobile" class="button-collapse"></a>
-            </div>
-        </div>
-    </div>
-    <div class="section no-pad-bot" id="index-banner">
-        <div class="container">
-            <h1 class="text_h center header cd-headline letters type">
-          <span>apiheap.js</span> <span class=
-          "cd-words-wrapper waiting"><strong class=
-          "is-visible">easy</strong> <strong>lightweight</strong>
-          <strong>open source</strong></span> <span><br />
-          <br />
-          <a class="waves-effect waves-light btn dark-blue" id=
-          "dlButton" href=
-          "http://www.ucarecdn.com/e1523426-7a45-4d26-9b6e-78cb79c15cbb/apiheapmin.js"
-          name="dlButton">Download</a></span>
-        </h1>
-        </div>
-    </div>
-    <div id="intro" class="section scrollspy">
-        <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <h2 class="center header text_h2">
-              apiheap.js is a JavaScript library that lets you make
-              <span class="span_h2">REST requests</span> in
-              <span class="span_h2">under five lines</span> of
-              code.
-            </h2>
-                </div>
-                <div class="col s12 m4 l4">
-                    <div class="center promo promo-example">
-                        <h5 class="promo-caption">
-                Easy.
-              </h5>
-                        <p class="light center">
-                            Apiheap.js is super easy to use. Start making your REST requests to a number of platforms, in just a few minutes.
-                        </p>
-                    </div>
-                </div>
-                <div class="col s12 m4 l4">
-                    <div class="center promo promo-example">
-                        <h5 class="promo-caption">
-                Lightweight
-              </h5>
-                        <p class="light center">
-                            Apiheap.js is only 6.23 kilobytes in size. Make quick and powerful requests, without compromising performance.
-                        </p>
-                    </div>
-                </div>
-                <div class="col s12 m4 l4">
-                    <div class="center promo promo-example">
-                        <h5 class="promo-caption">
-                Open Source
-              </h5>
-                        <p class="light center">
-                            Apiheap.js is completely opensource. View the code, make changes, and use it to your hearts content.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="section scrollspy" id="usage">
-        <div class="container">
-            <h2 class="header text_b">
-          Usage
-        </h2>
-            <div class="row">
-                <div id="exampleContents">
-                    <ul>
-                        <li>
-                            <a href="javascript:void(0)" onclick="goToByScroll('setupId')">Setup</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" onclick="goToByScroll('bitlyId')">Bitly</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" onclick="goToByScroll('tumblrId')">Tumblr</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" onclick="goToByScroll('imgurId')">Imgur</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" onclick="goToByScroll('redditId')">Reddit</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" onclick="goToByScroll('youtubeId')">YouTube</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" onclick="goToByScroll('weatherId')">OpenWeatherMap</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="card" id="setupId">
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4" onclick="moreText('#setupId','750px')">Setup</span>
-                        <p>
-                            To use apiheap.js, include it after your
-                            <code class="language-html">&lt;/body&gt;</code> tag. Note that apiheap.js requires jQuery to function.
-                        </p>
-                        <pre>
-<code class=
-"language-html">&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"&gt;&lt;/script&gt;
-&lt;script src="js/apiheap.min.js"&gt;&lt;/script&gt;</code>
-</pre>
-                        <p>
-                            If you prefer, you can also use apiheap.js through a CDN.
-                        </p>
-                        <pre>
-<code class=
-"language-html">&lt;script src="http://www.ucarecdn.com/e1523426-7a45-4d26-9b6e-78cb79c15cbb/apiheapmin.js"&gt;&lt;/script&gt;</code>
-</pre>
-                        <p>
-                            <button onclick="moreText('#setupId','750px')" class="activator waves-effect waves-light btn blue cardBtn">
-                                How It Works</button><a class="waves-effect waves-light btn white" href="http://www.ucarecdn.com/e1523426-7a45-4d26-9b6e-78cb79c15cbb/apiheapmin.js">Get
-                apiheap.js</a>
-                        </p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4" onclick="lessText('#setupId')">How It Works</span> .
-                        <p>
-                            To make a REST request using apiheap.js, make an object for apiheap, and in the parameters, specify which of the supported platforms you'd like to make a request to, and an API Key/ID if required.
-                            <strong>Currently, apiheap.js supports Bitly,
-                Tumblr, Imgur, Reddit, YouTube and OpenWeatherMap
-                requests. All require an API Key or ID except
-                Reddit, in which case the second param can be left
-                blank.</strong> Also, optionally create a variable (myData) for future use.
-                        </p>
-                        <pre>
-<code class=
-"language-javascript">var myObj = new apiheap("imgur", "IMGUR_CLIENT_ID"), myData;</code>
-</pre>Next, use your object to call the method for the platform you are making a request to. The parameters for this method vary for each platform, and you can read more about them by reading the details for the platform below. In all cases, the parameters will require details about your request. For instance, the Imgur example below can take three parameters;tag_name, opt_params, and is_topic, which mean the tag to search in, any specifics for the request, and whether or not you are requesting a topic.
-                        <pre>
-<code class=
-"language-javascript">var myObj = new apiheap("imgur", "IMGUR_CLIENT_ID"), myData;
-myObj.imgur("Awesome", "top/all", true); //Look in topic 'Awesome', search top of alltime, request is a topic.</code>
-</pre>After the aforementioned code has been executed, through either a function or a page load, your request has been made!
-                        <strong>Your data will be in myObj.RESPONSE. You can manipulate or
-use the data in any way that you chose, or, you can optionally use
-one of the functions included with apiheap.js, to parse
-it.</strong> In almost all cases, the function to parse data takes two parameters; the response, and the item you want. imgurParse however, takes three parameters; the response, the item you want, and whether or not the request was for a topic. In this example, the function imgurParse is being used to retrieve an array of links for images fetched from a request to the topic 'Awesome.' Remember to write this line of code inside some function that you can call after the previous lines of code have surely executed.
-                        <pre>
-<code class="language-javascript">
+<!DOCTYPE html><html><head><meta http-equiv=Content-Type content="text/html; charset=UTF-8" /><meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" /><meta name=theme-color content=#2196F3><title>apiheap.js | Easy REST Requests</title><link href=min/plugin-min.css type=text/css rel=stylesheet><link href=min/custom-min.css type=text/css rel=stylesheet><link rel=stylesheet type=text/css href=css/main.css><link rel=stylesheet type=text/css href=css/prism.css><link rel=stylesheet type=text/css href=css/alertify.css><link rel=icon type=img/png href=favicon.png>
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-43160348-14', 'auto');
+  ga('send', 'pageview');</script></head><body id=top class=scrollspy><div id=loader-wrapper><div id=loader></div><div class="loader-section section-left"></div><div class="loader-section section-right"></div></div><div class=navbar-fixed>
+<nav id=nav_f class=default_color role=navigation><div class=container><div class=nav-wrapper>
+<a href=javascript:void(0) onclick="goToByScroll('index-banner')" id=logo-container class=brand-logo>apiheap.js</a><ul class="right hide-on-med-and-down"><li><a href=#intro>About</a></li><li><a href=#usage>Usage</a></li><li><a href=https://github.com/tash-had/apiheapjs target="
+                        _blank">GitHub</a></li><li><a href=http://tash-had.com target=_blank>Contact</a></li></ul><ul id=nav-mobile class=side-nav><li><a href=#intro>About</a></li><li><a href=#work>Usage</a></li><li><a href=https://github.com/tash-had/apiheapjs target=_blank>GitHub</a></li><li><a href=http://tash-had.com target=_blank>Contact</a></li></ul>
+<a href=# data-activates=nav-mobile class=button-collapse><i class=mdi-navigation-menu></i></a></div></div>
+</nav></div><div class="section no-pad-bot" id=index-banner><div class=container><h1 class="text_h center header cd-headline letters type">
+<span>apiheap.js</span>
+<span class="cd-words-wrapper waiting">
+<b class=is-visible>easy</b>
+<b>lightweight</b>
+<b>open source</b>
+</span>
+<span><br><br><a class="waves-effect waves-light btn dark-blue" id=dlButton href=http://www.ucarecdn.com/e1523426-7a45-4d26-9b6e-78cb79c15cbb/apiheapmin.js>Download</a></span></h1></div></div><div id=intro class="section scrollspy"><div class=container><div class=row><div class="col s12"><h2 class="center header text_h2"> apiheap.js is a JavaScript library that lets you make <span class=span_h2>REST requests</span> in<span class=span_h2> under five lines </span>of code.</h2></div><div class="col s12 m4 l4"><div class="center promo promo-example">
+<i class=mdi-action-done></i><h5 class=promo-caption>Easy.</h5><p class="light center">Apiheap.js is super easy to use. Start making your REST requests to a number of platforms, in just a few minutes.</p></div></div><div class="col s12 m4 l4"><div class="center promo promo-example">
+<i class=mdi-action-get-app></i><h5 class=promo-caption>Lightweight</h5><p class="light center">Apiheap.js is only 6.23 kilobytes in size. Make quick and powerful requests, without compromising performance.</p></div></div><div class="col s12 m4 l4"><div class="center promo promo-example">
+<i class=mdi-hardware-keyboard-arrow-right></i><h5 class=promo-caption>Open Source</h5><p class="light center">Apiheap.js is completely opensource. View the code, make changes, and use it to your hearts content.</p></div></div></div></div></div><div class="section scrollspy" id=usage><div class=container><h2 class="header text_b">Usage</h2><div class=row><div id=exampleContents><ul><li><a href=javascript:void(0) onclick="goToByScroll('setupId')">Setup</a></li><li><a href=javascript:void(0) onclick="goToByScroll('bitlyId')">Bitly</a></li><li><a href=javascript:void(0) onclick="goToByScroll('tumblrId')">Tumblr</a></li><li><a href=javascript:void(0) onclick="goToByScroll('imgurId')">Imgur</a></li><li><a href=javascript:void(0) onclick="goToByScroll('redditId')">Reddit</a></li><li><a href=javascript:void(0) onclick="goToByScroll('youtubeId')">YouTube</a></li><li><a href=javascript:void(0) onclick="goToByScroll('weatherId')">OpenWeatherMap</a></li></ul></div><div class=card id=setupId><div class=card-content>
+<span class="card-title activator grey-text text-darken-4" onclick="moreText('#setupId','750px')">Setup <i class="mdi-navigation-more-vert right"></i></span><p>To use apiheap.js, include it after your <code class=language-html>&lt;/body&gt;</code> tag. Note that apiheap.js requires jQuery to function.</p>
+<pre><code class="language-html">&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="js/apiheap.min.js"&gt;&lt;/script&gt;</code></pre><p>If you prefer, you can also use apiheap.js through a CDN.</p>
+<pre><code class="language-html">&lt;script src="http://www.ucarecdn.com/e1523426-7a45-4d26-9b6e-78cb79c15cbb/apiheapmin.js"&gt;&lt;/script&gt;</code></pre><p>
+<button onclick="moreText('#setupId','750px')" class="activator waves-effect waves-light btn blue cardBtn">How It Works</button><a class="waves-effect waves-light btn white" href=http://www.ucarecdn.com/e1523426-7a45-4d26-9b6e-78cb79c15cbb/apiheapmin.js>Get apiheap.js</a></p></div><div class=card-reveal>
+<span class="card-title grey-text text-darken-4" onclick="lessText('#setupId')">How It Works <i class="mdi-navigation-close right"></i></span> .<p>To make a REST request using apiheap.js, make an object for apiheap, and in the parameters, specify which of the supported platforms you'd like to make a request to, and an API Key/ID if required. <b>Currently, apiheap.js supports Bitly, Tumblr, Imgur, Reddit, YouTube and OpenWeatherMap requests. All require an API Key or ID except Reddit, in which case the second param can be left blank.</b> Also, optionally create a variable (myData) for future use. <pre><code class="language-javascript">var myObj = new apiheap("imgur", "IMGUR_CLIENT_ID"), myData;</code></pre>Next, use your object to call the method for the platform you are making a request to. The parameters for this method vary for each platform, and you can read more about them by reading the details for the platform below. In all cases, the parameters will require details about your request. For instance, the Imgur example below can take three parameters;tag_name, opt_params, and is_topic, which mean the tag to search in, any specifics for the request, and whether or not you are requesting a topic.<pre><code class="language-javascript">var myObj = new apiheap("imgur", "IMGUR_CLIENT_ID"), myData;
+myObj.imgur("Awesome", "top/all", true); //Look in topic 'Awesome', search top of alltime, request is a topic.</code></pre>After the aforementioned code has been executed, through either a function or a page load, your request has been made! <b>Your data will be in myObj.RESPONSE. You can manipulate or use the data in any way that you chose, or, you can optionally use one of the functions included with apiheap.js, to parse it.</b> In almost all cases, the function to parse data takes two parameters; the response, and the item you want. imgurParse however, takes three parameters; the response, the item you want, and whether or not the request was for a topic. In this example, the function imgurParse is being used to retrieve an array of links for images fetched from a request to the topic 'Awesome.' Remember to write this line of code inside some function that you can call after the previous lines of code have surely executed.<pre><code class="language-javascript">
 var myObj = new apiheap("imgur", "IMGUR_CLIENT_ID"), myData;
 myObj.imgur("Awesome", "top/all", true); //Look in topic 'Awesome', search top of alltime, request is a topic.
 function myFunction() {
     myData = imgurParse(imgurObj.RESPONSE, "link", true); //Passing in response (imgurObj.RESPONSE), the item we want (link), and if the request was a topic (true).
     console.log(myData); } //Use the data (array)
-    </code>
-</pre>
-                    </div>
-                </div>
-                <div class="card" id="bitlyId">
-                    <div class="card-content">
-                        <span class="card-title grey-text text-darken-4">Bitly</span>
-                        <pre>
-<code class=
-"language-javascript"> //When myFunction() is triggered, bitlyLink will hold a short link for "https://google.ca"
+    </code></pre></p></div></div><div class=card id=bitlyId><div class=card-content>
+<span class="card-title grey-text text-darken-4">Bitly</span>
+<pre><code class = "language-javascript"> //When myFunction() is triggered, bitlyLink will hold a short link for "https://google.ca"
 var bitlyObj = new apiheap("bitly", "MY_AUTH_TOKEN"),bitlyLink;
 bitlyObj.bitly("https://google.ca");
 function myFunction() {
     bitlyLink = bitlyParse(bitlyObj.RESPONSE); console.log(bitlyLink);} 
-</code>
-</pre>
-                        <p>
-                            <a class="waves-effect waves-light btn white" target="_blank" href="https://bitly.com/a/oauth_apps">Get Bitly
-                Token</a>
-                            <button class="waves-effect waves-light btn green cardBtnRun" onclick="runBitly()">Run Example</button>
-                        </p>
-                    </div>
-                </div>
-                <div class="card" id="tumblrId">
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4" onclick="moreText('#tumblrId','615px')">Tumblr</span>
-                        <pre>
-<code class=
-"language-javascript">//When myFunction() is triggered, tumblrData will hold an array containing URL's of the 50 post's fetched. 
+</code></pre><p><a class="waves-effect waves-light btn white" target=_blank href=https://bitly.com/a/oauth_apps>Get Bitly Token</a><button class="waves-effect waves-light btn green cardBtnRun" onclick=runBitly()>Run Example</button></p></div></div><div class=card id=tumblrId><div class=card-content>
+<span class="card-title activator grey-text text-darken-4" onclick="moreText('#tumblrId','615px')">Tumblr <i class="mdi-navigation-more-vert right"></i></span>
+<pre><code class = "language-javascript">//When myFunction() is triggered, tumblrData will hold an array containing URL's of the 50 post's fetched. 
 var tumblrObj = new apiheap("tumblr", "MY_TUMBLR_KEY"), tumblrData;
 tumblrObj.tumblr("myexampleblog.tumblr.com", null, "limit=50");
 function myFunction() {
     tumblrData = tumblrParse(tumblrObj.RESPONSE, "post_url"); console.log(tumblrData);} 
-</code>
-</pre>
-                        <p>
-                            <button onclick="moreText('#tumblrId','615px')" class="activator waves-effect waves-light btn blue cardBtn">
-                                Details</button><a class="waves-effect waves-light btn white" href="https://www.tumblr.com/oauth/apps" target="_blank">Get Tumblr Key</a>
-                            <button class="waves-effect waves-light btn green cardBtnRun" onclick="runTumblr()">Run Example</button>
-                        </p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4" onclick="lessText('#tumblrId')">Tumblr Details</span>
-                        <h5>
-                myObj.tumblr()
-              </h5>
-                        <ul>
-                            <li>This method can take three parameters, and the first is required.
-                            </li>
-                            <li>
-                                <strong>Format:</strong> <code class="language-javascript">myObj.tumblr("BLOG_URL",
-                  "POST_TYPE", "REQUEST_PARAMS")</code>
-                            </li>
-                            <li>
-                                <strong>BLOG_URL:</strong> Eg. "myblog.tumblr.com" or "myblog.com"
-                            </li>
-                            <li>
-                                <strong>POST_TYPE:</strong> If left blank or null, the request will fetch all post types.
-                                <a href="http://49.media.tumblr.com/114a5264beba74f61afa73598bfc6713/tumblr_njb38qfFgb1qz8q0ho1_1280.gif" target="_blank">Click here for a full list of
-                  post types.</a>
-                            </li>
-                            <li>
-                                <strong>REQUEST_PARAMS:</strong> If left blank, the request will fetch the last 20 posts from the blog. Options include "tag", "limit" among others. <a href="https://www.tumblr.com/docs/en/api/v2#posts" target="_blank">Click here for a full list.</a>
-                            </li>
-                            <li>After this is executed, your response will be in myObj.RESPONSE. You can use the data raw, or parse it using the function below.
-                            </li>
-                        </ul>
-                        <h5>
-                tumblrParse()
-              </h5>
-                        <ul>
-                            <li>This method takes two parameters; the first is required.
-                            </li>
-                            <li>
-                                <strong>Format:</strong> <code class="language-javascript">tumblrParse(MY_RESPONSE,
-                  "MY_ITEM");</code>
-                            </li>
-                            <li>
-                                <strong>MY_RESPONSE:</strong> the response from your request. After a request is made, the response is stored under myObj.RESPONSE.
-                            </li>
-                            <li>
-                                <strong>MY_ITEM:</strong> the item you would like. If left blank or null, the function will return an array of posts from the request, which you can use. Item requests vary for each post. For example, audio posts will have properties like "track_name", or "plays", both of which photo posts do not have. When making the request in the myObj.tumblr() method, if you specified a POST_TYPE, this will not be an issue since all the posts in the response will be of the same type. However, if you did not specify a POST_TYPE, the post types in the response can vary. The tumblrParse() method returns an array of the item you requested from each post in the response (parameter 1). If you sent in a response with varying POST_TYPES, and requested an item that some posts do not have, the array will have an undefined value pushed to it. Posts that do have the requested item, will have the value of that item pushed to the the array as usual. A full chart of properties of the response, and properties for each type of post can be seen
-                                <a href="https://www.tumblr.com/docs/en/api/v2#m-posts-responses" target="_blank">here.</a> (Everything under the "Response Field" columns can be used for the MY_ITEM parameter). A chart of properties common to all posts can be seen under the 'Responses' section <a href="https://www.tumblr.com/docs/en/api/v2#blog-submissions">
-                  here.</a> For information about the blog, you can set this parameter to "blog_info", and you will recieve an object containing the info. You can also set this as "photos_url", and get an array of direct links to images in all photo posts from the response.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card" id="imgurId">
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4" onclick="moreText('#imgurId','615px')">Imgur</span>
-                        <pre>
-<code class=
-"language-javascript">//When myFunction() is triggered, imgurData will hold an array of links from the fetched data.  
+</code></pre><p><button onclick="moreText('#tumblrId','615px')" class="activator waves-effect waves-light btn blue cardBtn">Details</button><a class="waves-effect waves-light btn white" href=https://www.tumblr.com/oauth/apps target=_blank>Get Tumblr Key</a><button class="waves-effect waves-light btn green cardBtnRun" onclick=runTumblr()>Run Example</button></p></div><div class=card-reveal>
+<span class="card-title grey-text text-darken-4" onclick="lessText('#tumblrId')">Tumblr Details <i class="mdi-navigation-close right"></i></span><p><h5>myObj.tumblr()</h5><ul><li>This method can take three parameters, and the first is required.</li><li><b>Format:</b> <code class=language-javascript>myObj.tumblr("BLOG_URL", "POST_TYPE", "REQUEST_PARAMS")</code></li><li><b>BLOG_URL: </b>Eg. "myblog.tumblr.com" or "myblog.com"</li><li><b>POST_TYPE: </b>If left blank or null, the request will fetch all post types. <a href=http://49.media.tumblr.com/114a5264beba74f61afa73598bfc6713/tumblr_njb38qfFgb1qz8q0ho1_1280.gif target=_blank>Click here for a full list of post types.</a></li><li><b>REQUEST_PARAMS: </b>If left blank, the request will fetch the last 20 posts from the blog. Options include "tag", "limit" among others. <a href=https://www.tumblr.com/docs/en/api/v2#posts target=_blank>Click here for a full list.</a></li><li>After this is executed, your response will be in myObj.RESPONSE. You can use the data raw, or parse it using the function below.</li></ul><h5>tumblrParse()</h5><ul><li>This method takes two parameters; the first is required.</li><li><b>Format: </b><code class=language-javascript>tumblrParse(MY_RESPONSE, "MY_ITEM");</code></li><li><b>MY_RESPONSE: </b>the response from your request. After a request is made, the response is stored under myObj.RESPONSE.</li><li><b>MY_ITEM: </b>the item you would like. If left blank or null, the function will return an array of posts from the request, which you can use. Item requests vary for each post. For example, audio posts will have properties like "track_name", or "plays", both of which photo posts do not have. When making the request in the myObj.tumblr() method, if you specified a POST_TYPE, this will not be an issue since all the posts in the response will be of the same type. However, if you did not specify a POST_TYPE, the post types in the response can vary. The tumblrParse() method returns an array of the item you requested from each post in the response (parameter 1). If you sent in a response with varying POST_TYPES, and requested an item that some posts do not have, the array will have an undefined value pushed to it. Posts that do have the requested item, will have the value of that item pushed to the the array as usual. A full chart of properties of the response, and properties for each type of post can be seen <a href=https://www.tumblr.com/docs/en/api/v2#m-posts-responses target=_blank>here.</a> (Everything under the "Response Field" columns can be used for the MY_ITEM parameter). A chart of properties common to all posts can be seen under the 'Responses' section <a href=https://www.tumblr.com/docs/en/api/v2#blog-submissions>here.</a> For information about the blog, you can set this parameter to "blog_info", and you will recieve an object containing the info. You can also set this as "photos_url", and get an array of direct links to images in all photo posts from the response.</li></ul></p></div></div><div class=card id=imgurId><div class=card-content>
+<span class="card-title activator grey-text text-darken-4" onclick="moreText('#imgurId','615px')">Imgur <i class="mdi-navigation-more-vert right"></i></span>
+<pre><code class = "language-javascript">//When myFunction() is triggered, imgurData will hold an array of links from the fetched data.  
 var imgurObj = new apiheap("imgur", "MY_CLIENT_ID"), imgurData;
 imgurObj.imgur("cats", "top/all");
 function myFunction() {
     imgurData = imgurParse(imgurObj.RESPONSE, "link"); console.log(imgurData); }
-</code>
-</pre>
-                        <p>
-                            <button onclick="moreText('#imgurId','615px')" class="activator waves-effect waves-light btn blue cardBtn">
-                                Details</button><a class="waves-effect waves-light btn white" href="https://api.imgur.com/oauth2/addclient" target="_blank">Get Imgur Client ID</a>
-                            <button class="waves-effect waves-light btn green cardBtnRun" onclick="runImgur()">Run Example</button>
-                        </p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4" onclick="lessText('#imgurId')">Imgur Details</span>
-                        <h5>
-                myObj.imgur()
-              </h5>
-                        <ul>
-                            <li>This method can take three parameters, all of which are optional.
-                            </li>
-                            <li style="list-style: none">
-                                <strong>Format:</strong> <code class="language-javascript">myObj.imgur("TAG_NAME",
-                  "OPT_PARAMS", IS_TOPIC);</code>
-                            </li>
-                            <li>If all parameters are left blank, the request will fetch posts from the front page of Imgur.
-                            </li>
-                            <li>
-                                <strong>TAG_NAME:</strong> is the tag name of the posts you'd like to fetch.
-                            </li>
-                            <li>
-                                <strong>OPT_PARAMS:</strong> lets you specify a number of things about the posts your are fetching. You can sort the request by entering "viral", "top", or "time" in this parameter; you can also enter "rising" if your request was for a topic. If you entered "top" in the perameter, you can set a range with "top/day", "top/week", "top/month", "top/year", or "top/all". In all cases, you can specify a page number by trailing "page/NUMBER" at the end of your OPT_PARAMS value. For example: "top/all/page/3" or "page/3". You can also use this parameter to search in subreddit galleries, albums, and more, with r/SUBREDDIT_NAME, a/ALBUM_ID, etc. If you are doing this, set the first perameter to null. For example to search for the top images of all time in the "funny" subreddit gallery, you would write
-                                <code class="language-javascript">myObj.imgur(null,
-                  "r/funny/top/all");</code> Note that the first, and last character of this parameter can never be a slash.
-                            </li>
-                            <li>
-                                <strong>IS_TOPIC:</strong> this is pretty self explanatory. Enter true if you are searching in a User-Submitted section (topic). <em>Note that if
-                  you are searching in a topic, the first perameter
-                  (TAG_NAME) will be required, and its value should
-                  be the topic name.</em>
-                            </li>
-                        </ul>
-                        <h5>
-                imgurParse()
-              </h5>
-                        <ul>
-                            <li>This method takes three parameters; the first is required.
-                            </li>
-                            <li>
-                                <strong>Format:</strong> <code class="language-javascript">imgurParse(MY_RESPONSE,
-                  "MY_ITEM", IS_TOPIC);</code>
-                            </li>
-                            <li>
-                                <strong>MY_RESPONSE:</strong> Pass in your response. (Stored in myObj.RESPONSE)
-                            </li>
-                            <li>
-                                <strong>MY_ITEM:</strong> Pass in the item you want from all of the fetched posts. You can set this parameter to anything under the 'Key' column in <a href="https://api.imgur.com/models/image" target="_blank">this chart.</a> This function will return an array of the item you requested in each post from the response. If left blank, the function will return an array of all posts in the response.
-                            </li>
-                            <li>
-                                <strong>IS_TOPIC:</strong> set as true if you requested a topic, otherwise, leave this blank.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card" id="redditId">
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4" onclick="moreText('#redditId','550px')">Reddit</span>
-                        <pre>
-<code class=
-"language-javascript">//When myFunction() is triggered, redditData will hold an array of URL's from post's fetched.   
+</code></pre><p><button onclick="moreText('#imgurId','615px')" class="activator waves-effect waves-light btn blue cardBtn">Details</button><a class="waves-effect waves-light btn white" href=https://api.imgur.com/oauth2/addclient target=_blank>Get Imgur Client ID</a><button class="waves-effect waves-light btn green cardBtnRun" onclick=runImgur()>Run Example</button></p></div><div class=card-reveal>
+<span class="card-title grey-text text-darken-4" onclick="lessText('#imgurId')">Imgur Details <i class="mdi-navigation-close right"></i></span><p><h5>myObj.imgur()</h5><ul><li><li>This method can take three parameters, all of which are optional.</li><b>Format: </b><code class=language-javascript>myObj.imgur("TAG_NAME", "OPT_PARAMS", IS_TOPIC);</code></li><li>If all parameters are left blank, the request will fetch posts from the front page of Imgur.</li><li><b>TAG_NAME: </b>is the tag name of the posts you'd like to fetch.</li><li><b>OPT_PARAMS: </b>lets you specify a number of things about the posts your are fetching. You can sort the request by entering "viral", "top", or "time" in this parameter; you can also enter "rising" if your request was for a topic. If you entered "top" in the perameter, you can set a range with "top/day", "top/week", "top/month", "top/year", or "top/all". In all cases, you can specify a page number by trailing "page/NUMBER" at the end of your OPT_PARAMS value. For example: "top/all/page/3" or "page/3". You can also use this parameter to search in subreddit galleries, albums, and more, with r/SUBREDDIT_NAME, a/ALBUM_ID, etc. If you are doing this, set the first perameter to null. For example to search for the top images of all time in the "funny" subreddit gallery, you would write <code class=language-javascript>myObj.imgur(null, "r/funny/top/all");</code> Note that the first, and last character of this parameter can never be a slash.</li><li><b>IS_TOPIC: </b>this is pretty self explanatory. Enter true if you are searching in a User-Submitted section (topic). <i>Note that if you are searching in a topic, the first perameter (TAG_NAME) will be required, and its value should be the topic name.</i></li></ul><h5>imgurParse()</h5><ul><li>This method takes three parameters; the first is required.</li><li><b>Format: </b><code class=language-javascript>imgurParse(MY_RESPONSE, "MY_ITEM", IS_TOPIC);</code></li><li><b>MY_RESPONSE: </b>Pass in your response. (Stored in myObj.RESPONSE)</li><li><b>MY_ITEM: </b>Pass in the item you want from all of the fetched posts. You can set this parameter to anything under the 'Key' column in <a href=https://api.imgur.com/models/image target=_blank>this chart.</a> This function will return an array of the item you requested in each post from the response. If left blank, the function will return an array of all posts in the response.</li><li><b>IS_TOPIC: </b>set as true if you requested a topic, otherwise, leave this blank.</li></ul></p></div></div><div class=card id=redditId><div class=card-content>
+<span class="card-title activator grey-text text-darken-4" onclick="moreText('#redditId','550px')">Reddit <i class="mdi-navigation-more-vert right"></i></span>
+<pre><code class = "language-javascript">//When myFunction() is triggered, redditData will hold an array of URL's from post's fetched.   
 var redditObj = new apiheap("reddit"), redditData;
-redditObj.reddit("funny", "new", "t=week&amp;limit=50");
+redditObj.reddit("funny", "new", "t=week&limit=50");
 function myFunction() {
     redditData = redditParse(redditObj.RESPONSE, "url"); console.log(redditData);} 
-</code>
-</pre>
-                        <p>
-                            <button onclick="moreText('#redditId','550px')" class="activator waves-effect waves-light btn blue cardBtn">
-                                Details</button>
-                            <button class="waves-effect waves-light btn green cardBtnRun" onclick="runReddit()">Run Example</button>
-                        </p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4" onclick="lessText('#redditId')">Reddit Details</span>
-                        <h5>
-                myObj.reddit()
-              </h5>
-                        <ul>
-                            <li>This method can take three parameters, all of which are optional.
-                            </li>
-                            <li>
-                                <strong>Format:</strong> <code class="language-javascript">myObj.reddit("SUBREDDIT_NAME",
-                  "SORT", "OPT_PARAMS");</code>
-                            </li>
-                            <li>
-                                <strong>SUBREDDIT_NAME:</strong> the name of the subreddit you'd like to search. If left blank, the request will default to the front page.
-                            </li>
-                            <li>
-                                <strong>SORT:</strong> this lets you specify many details about your request. If you are searching a subreddit, you can enter "new", "rising", "controversial", "top", "gilded" or "promoted". You can also use this parameter for other things, like searching subreddits. For example,
-                                <code class="language-javascript">myObj.reddit(null,
-                  "subreddits/popular");</code> will search for popular subreddits.
-                            </li>
-                            <li>
-                                <strong>OPT_PARAMS:</strong> Use this parameter to add more specifics to your request. You can see a list of common parameters at the very top of <a target="_blank" href="https://www.reddit.com/dev/api">this page.</a> You can also see <a href="https://www.reddit.com/dev/api#GET_{sort}" target="_blank">this chart</a> for a list of things you can place in this parameter. In the following example, we use the second and third parameters to get results with a search query.
-                                <code class="language-javascript">myObj.reddit(null,
-                  "search", "q=kittens&amp;limit=10");</code>
-                            </li>
-                        </ul>
-                        <h5>
-                redditParse()
-              </h5>
-                        <ul>
-                            <li>
-                                <strong>Format:</strong> <code class="language-javascript">redditParse(MY_RESPONSE,
-                  MY_ITEM);</code>
-                            </li>
-                            <li>
-                                <strong>MY_RESPONSE:</strong> Your response is stored in myObj.RESPONSE.
-                            </li>
-                            <li>
-                                <strong>MY_ITEM:</strong> If left blank, the function will return an array of the posts fetched. You can use this parameter to specify what item you'd like from the response. You can enter anything under the 'name' column of
-                                <a href="https://github.com/reddit/reddit/wiki/JSON#link-implements-votable--created" target="_blank">this chart</a> if you searched listings in a subreddit. Use <a href="https://github.com/reddit/reddit/wiki/JSON#subreddit" target="_blank">this chart if you searched
-                  subreddits.</a> You can leave this blank to get an array of the posts, then browse through the properties yourself if you prefer.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card" id="youtubeId">
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4" onclick="moreText('#youtubeId','750px')">YouTube</span>
-                        <pre>
-<code class=
-"language-javascript">//When myFunction() is triggered, ytData will hold an array of YouTube links from video's fetched.  
+</code></pre><p>
+<button onclick="moreText('#redditId','550px')" class="activator waves-effect waves-light btn blue cardBtn">Details</button>
+<button class="waves-effect waves-light btn green cardBtnRun" onclick=runReddit()>Run Example</button></p></div><div class=card-reveal>
+<span class="card-title grey-text text-darken-4" onclick="lessText('#redditId')">Reddit Details <i class="mdi-navigation-close right"></i></span><p><h5>myObj.reddit()</h5><ul><li>This method can take three parameters, all of which are optional.</li><li><b>Format: </b><code class=language-javascript>myObj.reddit("SUBREDDIT_NAME", "SORT", "OPT_PARAMS");</code></li><li><b>SUBREDDIT_NAME: </b>the name of the subreddit you'd like to search. If left blank, the request will default to the front page.</li><li><b>SORT: </b>this lets you specify many details about your request. If you are searching a subreddit, you can enter "new", "rising", "controversial", "top", "gilded" or "promoted". You can also use this parameter for other things, like searching subreddits. For example, <code class=language-javascript>myObj.reddit(null, "subreddits/popular");</code> will search for popular subreddits.</li><li><b>OPT_PARAMS: </b>Use this parameter to add more specifics to your request. You can see a list of common parameters at the very top of <a target=_blank href=https://www.reddit.com/dev/api>this page.</a> You can also see <a href=https://www.reddit.com/dev/api#GET_{sort} target=_blank>this chart</a> for a list of things you can place in this parameter. In the following example, we use the second and third parameters to get results with a search query. <code class=language-javascript>myObj.reddit(null, "search", "q=kittens&limit=10");</code></li></ul><h5>redditParse()</h5><ul><li><b>Format: </b><code class=language-javascript>redditParse(MY_RESPONSE, MY_ITEM);</code></li><li><b>MY_RESPONSE: </b>Your response is stored in myObj.RESPONSE.</li><li><b>MY_ITEM: </b>If left blank, the function will return an array of the posts fetched. You can use this parameter to specify what item you'd like from the response. You can enter anything under the 'name' column of <a href=https://github.com/reddit/reddit/wiki/JSON#link-implements-votable--created target=_blank>this chart </a> if you searched listings in a subreddit. Use <a href=https://github.com/reddit/reddit/wiki/JSON#subreddit target=_blank> this chart if you searched subreddits.</a> You can leave this blank to get an array of the posts, then browse through the properties yourself if you prefer.</li></ul></p></div></div><div class=card id=youtubeId><div class=card-content>
+<span class="card-title activator grey-text text-darken-4" onclick="moreText('#youtubeId','750px')">YouTube <i class="mdi-navigation-more-vert right"></i></span>
+<pre><code class = "language-javascript">//When myFunction() is triggered, ytData will hold an array of YouTube links from video's fetched.  
 var ytObj = new apiheap("youtube", "MY_API_KEY"), ytData=[];
 ytObj.youtube("search", "snippet", "q=cat videos");
 function myFunction() {
     ytData = youtubeParse(ytObj.RESPONSE, "vid_links"); console.log(ytData);}
-</code>
-</pre>
-                        <p>
-                            <button onclick="moreText('#youtubeId','750px')" class="activator waves-effect waves-light btn blue cardBtn">
-                                Details</button><a class="waves-effect waves-light btn white" href="https://developers.google.com/youtube/registering_an_application" target="_blank">Get YouTube API
-                Key</a>
-                            <button class="waves-effect waves-light btn green cardBtnRun" onclick="runYoutube()">Run Example</button>
-                        </p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4" onclick="lessText('#youtubeId')">YouTube
-              Details</span>
-                        <h5>
-                myObj.youtube()
-              </h5>
-                        <ul>
-                            <li>This method perfroms list methods using the YouTube data API.
-                            </li>
-                            <li>
-                                <strong>Format:</strong> <code class="language-javascript">myObj.youtube(TYPE, PART,
-                  OPT_PARAMS, PAGE_TOKEN);</code>
-                            </li>
-                            <li>
-                                <strong>TYPE:</strong> Enter the type of activity you wish to perform. Examples include "search" to make a search query or "playlists" to search playlists. A full list of resource types can be found <a href="https://developers.google.com/youtube/v3/docs/#resource-types">
-                  here.</a> Remember that type must be able to use list methods.
-                            </li>
-                            <li>
-                                <strong>PART:</strong> This is a required parameter for the list method. The value of this parameter can vary depending on which resource type you're requesting. To see which parameters you can use, go to <a href="https://developers.google.com/youtube/v3/docs/" target="_blank">this link</a>, scroll down to your resource type, and click the "list" method on the chart under your resource type. There, you'll see a chart with all the values you can enter for the PART parameter.
-                            </li>
-                            <li>
-                                <strong>OPT_PARAMS:</strong> This parameter lets you specify more information about your request. You can find a list of all the optional parameters you can specify in the same chart you used to choose a value for the PART parameter.
-                            </li>
-                            <li>
-                                <strong>PAGE_TOKEN:</strong> This parameter is not required and will be discussed further down.
-                            </li>
-                            <li>Examples:
-                            </li>
-                            <li>
-                                <code class="language-javascript">myObj.youtube("search",
-                  "snippet", "q=cat videos"); //Requesting results
-                  from a search query for 'cat videos'</code>
-                            </li>
-                            <li>
-                                <code class="language-javascript">myObj.youtube("playlists",
-                  "snippet", "channelId=CHANNEL_ID"); //Requesting
-                  results from playlists in a channel</code>
-                            </li>
-                        </ul>
-                        <h5>
-                youtubeParse()
-              </h5>
-                        <ul>
-                            <li>
-                                <strong>Format:</strong> <code class="language-javascript">youtubeParse(DATA,
-                  ITEM);</code>
-                            </li>
-                            <li>
-                                <strong>DATA:</strong> This is the response from your request (stored in myObj.RESPONSE).
-                            </li>
-                            <li>
-                                <strong>ITEM:</strong> This is the item you want from the results. Your options for this parameter are: "type", "vid_links", "vid_ids", "vid_dates", "vid_titles", "vid_thumbnails", "chan_links", "chan_ids", "chan_names" or "vid_descriptions". All of those are pretty self-explanatory. The function will return an array of the item you requested from each video in the response. This value is required, and will return an error if left blank.
-                            </li>
-                        </ul>
-                        <h5>
-                Getting More Pages of Results
-              </h5>
-                        <ul>
-                            <li>The YouTube API only returns the first page of videos when you make a request. Each response contains a "nextPageToken" which is the token you can use to get results from the next page in your query. To do this, have a loadMore() function, which will use the nextPageToken to make another request. Example:
-                            </li>
-                            <li style="list-style: none; display: inline">
-                                <pre>
-<code class=
-"language-javascript">//Make object, and use youtube() method to make request for 'cats' search query. Also make variable to hold data. 
+</code></pre><p><button onclick="moreText('#youtubeId','750px')" class="activator waves-effect waves-light btn blue cardBtn">Details</button><a class="waves-effect waves-light btn white" href=https://developers.google.com/youtube/registering_an_application target=_blank>Get YouTube API Key</a><button class="waves-effect waves-light btn green cardBtnRun" onclick=runYoutube()>Run Example</button></p></div><div class=card-reveal>
+<span class="card-title grey-text text-darken-4" onclick="lessText('#youtubeId')">YouTube Details <i class="mdi-navigation-close right"></i></span><h5>myObj.youtube()</h5><p><ul><li>This method perfroms list methods using the YouTube data API.</li><li><b>Format: </b><code class=language-javascript>myObj.youtube(TYPE, PART, OPT_PARAMS, PAGE_TOKEN);</code></li><li><b>TYPE: </b>Enter the type of activity you wish to perform. Examples include "search" to make a search query or "playlists" to search playlists. A full list of resource types can be found <a href=https://developers.google.com/youtube/v3/docs/#resource-types>here.</a> Remember that type must be able to use list methods.</li><li><b>PART: </b>This is a required parameter for the list method. The value of this parameter can vary depending on which resource type you're requesting. To see which parameters you can use, go to <a href=https://developers.google.com/youtube/v3/docs/ target=_blank>this link</a>, scroll down to your resource type, and click the "list" method on the chart under your resource type. There, you'll see a chart with all the values you can enter for the PART parameter.</li><li><b>OPT_PARAMS: </b>This parameter lets you specify more information about your request. You can find a list of all the optional parameters you can specify in the same chart you used to choose a value for the PART parameter.</li><li><b>PAGE_TOKEN: </b> This parameter is not required and will be discussed further down.</li><li>Examples:</li><li><code class=language-javascript>myObj.youtube("search", "snippet", "q=cat videos"); //Requesting results from a search query for 'cat videos'</code></li><li><code class=language-javascript>myObj.youtube("playlists", "snippet", "channelId=CHANNEL_ID"); //Requesting results from playlists in a channel</code></li></ul><h5>youtubeParse()</h5><ul><li><b>Format: </b><code class=language-javascript>youtubeParse(DATA, ITEM);</code></li><li><b>DATA: </b>This is the response from your request (stored in myObj.RESPONSE).</li><li><b>ITEM: </b>This is the item you want from the results. Your options for this parameter are: "type", "vid_links", "vid_ids", "vid_dates", "vid_titles", "vid_thumbnails", "chan_links", "chan_ids", "chan_names" or "vid_descriptions". All of those are pretty self-explanatory. The function will return an array of the item you requested from each video in the response. This value is required, and will return an error if left blank.</li></ul><h5>Getting More Pages of Results</h5><ul><li>The YouTube API only returns the first page of videos when you make a request. Each response contains a "nextPageToken" which is the token you can use to get results from the next page in your query. To do this, have a loadMore() function, which will use the nextPageToken to make another request. Example:</li><pre><code class="language-javascript">//Make object, and use youtube() method to make request for 'cats' search query. Also make variable to hold data. 
 var myObj = new apiheap("youtube", "MY_API_KEY"), query_results = [];
 myObj.youtube("search", "snippet", "q=cats");
 //Make loadMore() function to first push request response to query_results, then make another request using the youtube() method - this time, including a fourth parameter (PAGE_TOKEN). Enter pageToken(myObj.MY_RESPONSE) as the value for the fourth parameter.  
@@ -532,96 +82,22 @@ function loadMore() {
     myObj.youtube("search", "snippet", "q=cats", pageToken(myObj.RESPONSE));}
 //query_results will be an array of responses (depending on how many times loadMore() was triggered). Use the youtubeParse() method, and pass in query_results as the data, along with an request item to parse data from the responses. 
 function myFunction() {
-    console.log(youtubeParse(query_results, "vid_links"));}</code>
-</pre>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card" id="weatherId">
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4" onclick="moreText('#weatherId',380px)">OpenWeatherMap</span>
-                        <pre>
-<code class=
-"language-javascript">//When myFunction() is triggered, weatherData will hold an object with information from the response.  
+    console.log(youtubeParse(query_results, "vid_links"));}</code></pre></ul></p></div></div><div class=card id=weatherId><div class=card-content>
+<span class="card-title activator grey-text text-darken-4" onclick="moreText('#weatherId',380px)">OpenWeatherMap <i class="mdi-navigation-more-vert right"></i></span>
+<pre><code class = "language-javascript">//When myFunction() is triggered, weatherData will hold an object with information from the response.  
 var weatherObj = new apiheap("openweathermap", "MY_API_KEY"), weatherData;
 weatherObj.weather("toronto");
 function myFunction() {
     weatherData = weatherParse(weatherObj.RESPONSE, "main"); console.log(weatherData);}
-</code>
-</pre>
-                        <p>
-                            <button onclick="moreText('#weatherId','380px')" class="activator waves-effect waves-light btn blue cardBtn">
-                                Details</button><a class="waves-effect waves-light btn white" href="http://home.openweathermap.org/" target="_blank">Get OpenWeatherMap Key</a>
-                            <button class="waves-effect waves-light btn green cardBtnRun" onclick="runWeather()">Run Example</button>
-                        </p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4" onclick="lessText('#weatherId')">OpenWeatherMap
-              Details</span>
-                        <h5>
-                myObj.weather()
-              </h5>
-                        <ul>
-                            <li style="list-style: none">
-                                <strong>Format:</strong> <code class="language-javascript">myObj.weather("CITY",
-                  "CUSTOM");</code>
-                            </li>
-                            <li>
-                                <strong>CITY:</strong> Enter the city for the weather data you wish to fetch. Optionally, you can enter the country code also. Eg. "toronto, ca" or "london, uk"
-                            </li>
-                            <li>
-                                <strong>CUSTOM:</strong> If you do not wish to search weather by city, you can leave the first parameter null and enter a custom request here. You can look at other methods <a href="http://openweathermap.org/current">here.</a> Example: <code class="language-javascript">myObj.weather(null,
-                  "zip=XXX XXX, ca")</code>
-                            </li>
-                        </ul>
-                        <h5>
-                weatherParse()
-              </h5>
-                        <ul>
-                            <li>
-                                <strong>Format:</strong> <code class="language-javascript">weatherParse(RESPONSE,
-                  ITEM);</code>
-                            </li>
-                            <li>
-                                <strong>RESPONSE:</strong> Your response is stored in myObj.RESPONSE
-                            </li>
-                            <li>
-                                <strong>ITEM:</strong> See a full list of items by <a href="http://openweathermap.org/current#current_JSON">clicking
-                  here</a> (look under the 'Parameters' section). For main whether information, enter "main" for this perameter.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-            © 2015 Tash-had Saqif | apiheap.js under <a target="_blank" href="http://opensource.org/licenses/MIT" style="color:white!important">MIT License</a>
-        </div>
-    </div>
-    <script src="min/plugin-min.js" type="text/javascript">
-    </script>
-    <script src="min/custom-min.js" type="text/javascript">
-    </script>
-    <script type="text/javascript" src="js/alertify.js">
-    </script>
-    <script type="text/javascript" src="js/apiheap.min.js">
-    </script>
-    <script type="text/javascript" src="js/prism.js">
-    </script>
-    <script type="text/javascript" src="js/scripts.js">
-    </script>
-    <script type="text/javascript">
-        //<![CDATA[
-        function goToByScroll(a) {
-            $("html,body").animate({
-                scrollTop: $("#" + a).offset().top
-            }, "slow")
-        };
-        //]]>
-    </script>
-</body>
-
-</html>
+</code></pre><p><button onclick="moreText('#weatherId','380px')" class="activator waves-effect waves-light btn blue cardBtn">Details</button><a class="waves-effect waves-light btn white" href=http://home.openweathermap.org/ target=_blank>Get OpenWeatherMap Key</a><button class="waves-effect waves-light btn green cardBtnRun" onclick=runWeather()>Run Example</button></p></div><div class=card-reveal>
+<span class="card-title grey-text text-darken-4" onclick="lessText('#weatherId')">OpenWeatherMap Details <i class="mdi-navigation-close right"></i></span><p><h5>myObj.weather()</h5><ul><b>Format: </b><code class=language-javascript>myObj.weather("CITY", "CUSTOM");</code><li><b>CITY: </b>Enter the city for the weather data you wish to fetch. Optionally, you can enter the country code also. Eg. "toronto, ca" or "london, uk"</li><li><b>CUSTOM: </b>If you do not wish to search weather by city, you can leave the first parameter null and enter a custom request here. You can look at other methods <a href=http://openweathermap.org/current>here.</a> Example: <code class=language-javascript>myObj.weather(null, "zip=XXX XXX, ca")</code></li></ul><h5>weatherParse()</h5><ul><li><b>Format: </b><code class=language-javascript>weatherParse(RESPONSE, ITEM);</code></li><li><b>RESPONSE: </b>Your response is stored in myObj.RESPONSE</li><li><b>ITEM: </b>See a full list of items by <a href=http://openweathermap.org/current#current_JSON>clicking here</a> (look under the 'Parameters' section). For main whether information, enter "main" for this perameter.</li></ul></p></div></div></div></div></div>
+<footer class="page-footer blue"><div class=footer-copyright><div class=container>
+© 2015 Tash-had Saqif | apiheap.js under <a target="_blank" href=http://opensource.org/licenses/MIT style=color:white!important>MIT License</a></div></div>
+</footer>
+<script src=min/plugin-min.js></script>
+<script src=min/custom-min.js></script>
+<script type=text/javascript src=js/alertify.js></script>
+<script type=text/javascript src=js/apiheap.min.js></script>
+<script type=text/javascript src=js/prism.js></script>
+<script type=text/javascript src=js/scripts.js></script>
+<script type=text/javascript>function goToByScroll(a){$("html,body").animate({scrollTop:$("#"+a).offset().top},"slow")};</script></body></html>
