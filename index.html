@@ -207,7 +207,7 @@ myObj.imgur("Awesome", "top/all", true); //Look in topic 'Awesome', search top o
                         </p><pre><code class="language-javascript">var myObj = new apiheap("imgur", "IMGUR_CLIENT_ID"), myData;
 myObj.imgur("Awesome", "top/all", true); //Look in topic 'Awesome', search top of alltime, request is a topic.
 function myFunction() {
-    myData = imgurObj.parse("link"); //Requesting all 'links' from the objects in the response data.
+    myData = myObj.parse("link"); //Requesting all 'links' from the objects in the response data.
     console.log(myData); } //Use the data (array)
     </code>
 </pre>
