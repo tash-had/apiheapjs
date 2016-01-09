@@ -246,11 +246,20 @@ function apiheap(source, key) {
                                     break;
 
                                 case "vid_links":
-                                    RETURN_VALUE.push("https://www.youtube.com/watch?v=" + value.id.videoId);
+                                    if (value.id.videoId != undefined) {
+                                        RETURN_VALUE.push("https://www.youtube.com/watch?v=" + value.id.videoId);
+                                    } else {
+                                        RETURN_VALUE.push("https://www.youtube.com/playlist?list=" + value.id.playlistId);
+                                    }
                                     break;
 
                                 case "vid_ids":
-                                    RETURN_VALUE.push(value.id.videoId);
+                                    if (value.id.videoId != undefined) {
+                                        RETURN_VALUE.push(value.id.videoId);
+
+                                    } else {
+                                        RETURN_VALUE.push(value.id.playlistId);
+                                    }
                                     break;
 
                                 case "vid_dates":
