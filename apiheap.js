@@ -353,7 +353,7 @@ function apiRequest(format, FINAL_URL) {
 }
 
 function errorHandle(errMessage) {
-    alert("APIHEAP ERROR: " + errMessage);
+    console.log(errMessage); 
 }
 
 function html_strip(html_to_strip) {
