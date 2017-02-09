@@ -5,6 +5,9 @@
  *PROJECT: tash-had.github.io/apiheapjs 
  *
  */
+
+
+// Function to check if value is undefined/empty
 isUndefined = function(value) {
     if (typeof(value) === 'undefined' || value === null || value === 'null' || value === undefined) {
         return true;
@@ -13,6 +16,7 @@ isUndefined = function(value) {
     }
 }
 
+// Main class 
 function apiheap(source, key) {
     SOURCE_ID = source.toLowerCase();
     if (SOURCE_ID === "reddit") {
@@ -336,6 +340,7 @@ function apiheap(source, key) {
     }
 }
 
+//Function to perform API requests and return response 
 function apiRequest(format, FINAL_URL) {
     var response;
     try {
@@ -352,14 +357,17 @@ function apiRequest(format, FINAL_URL) {
     }
 }
 
+// Function to handle errors
 function errorHandle(errMessage) {
     console.log(errMessage); 
 }
 
+// Function to strip html tags from data
 function html_strip(html_to_strip) {
     return jQuery('<p>' + html_to_strip + '</p>').text();
 }
 
+// Function to ensure a list of values does not contain duplicate data
 function preventDuplicate(testValue, testArray) {
     if (testArray.indexOf(testValue) === -1 && testValue !== 'undefined' && testValue !== undefined &&
         testValue !== 'default' && typeof(testValue) !== undefined && testValue !== 'null' && testValue !== null) {
@@ -369,6 +377,7 @@ function preventDuplicate(testValue, testArray) {
     }
 }
 
+// Function to handle pagnations for YouTube requests
 function pageToken(json_data) {
     return json_data.responseJSON.nextPageToken;
 }
