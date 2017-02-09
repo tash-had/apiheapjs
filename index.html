@@ -390,7 +390,14 @@ function myFunction() {
                                 <b>MY_ITEM:</b> If left blank, the function will return an array of the posts fetched. You can use this parameter to specify what item you'd like from the response. You can enter anything under the 'name' column of <a href="https://github.com/reddit/reddit/wiki/JSON#link-implements-votable--created" target="_blank">this chart</a> if you searched listings in a subreddit. Use <a href="https://github.com/reddit/reddit/wiki/JSON#subreddit" target="_blank">this chart if you searched subreddit details.</a> You can leave this blank to get an array of the posts, then browse through the properties yourself if you prefer.
                             </li>
                         </ul>
-                        <p></p>
+                        <h5>Fetch Reddit Comments</h5>
+<pre><code class="language-javascript">
+    var redditObj = new apiheap("reddit"), redditData;
+    /* Subreddit is optional. Defaults to /r/all. 2nd and 3rd parameters are required.
+    This code will return the most recent comments from /r/cats containing "funny" */
+    redditObj.reddit("cats", "comments", "funny&limit=50");
+    function myFunction() {
+        redditData = redditObj.parse("comments"); console.log(redditData);}</code></pre>
                     </div>
                 </div>
                 <div class="card" id="youtubeId">
@@ -555,7 +562,7 @@ function myFunction() {
             </div>
         </div>
     </footer>
-<script src="min/plugin-min.js"></script> <script src="min/custom-min.js"></script> <script src="js/alertify.js" type="text/javascript"></script> <script src="js/apiheap.min.js" type="text/javascript"></script> <script src="js/prism.js" type="text/javascript"></script> <script src="js/scripts.js" type="text/javascript"></script>
+<script src="min/plugin-min.js"></script> <script src="min/custom-min.js"></script> <script src="js/alertify.js" type="text/javascript"></script> <script src="js/apiheap.js" type="text/javascript"></script> <script src="js/prism.js" type="text/javascript"></script> <script src="js/scripts.js" type="text/javascript"></script>
     <script type="text/javascript">
         function goToByScroll(a) {
             $("html,body").animate({
