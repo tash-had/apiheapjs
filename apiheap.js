@@ -25,27 +25,43 @@ function apiheap(source, key) {
             this.LISTING = listing;
             this.OPT_PARAMS = opt_params;
             var reddit_frame = "https://www.reddit.com/";
-            if (isUndefined(this.SOURCE_NAME)) {
-                if (isUndefined(this.LISTING)) {
-                    this.FINAL_URL = reddit_frame + ".json";
-                } else {
-                    if (isUndefined(this.OPT_PARAMS)) {
-                        this.FINAL_URL = reddit_frame + this.LISTING + "/.json";
-                    } else {
-                        this.FINAL_URL = reddit_frame + this.LISTING + "/.json?" + this.OPT_PARAMS;
+
+            if (!isUndefined(this.LISTING) && this.LISTING == "comments"){
+                /**
+                 * SUBREDDIT:
+                 * Defaults to comments from /r/all if not specified.
+                 * Format for OPT_PARAMS: QUERY + optional extras.
+                 * cats&limit=80
+                 * */
+                this.SOURCE_NAME = (isUndefined(this.SOURCE_NAME) ? this.SOURCE_NAME = "" : "subreddit=" +
+                    this.SOURCE_NAME);
+                reddit_frame = "https://api.pushshift.io/reddit/search/comment?" + this.SOURCE_NAME + "&q=" +
+                    this.OPT_PARAMS;
+                this.FINAL_URL = reddit_frame;
+            }else{
+                if (isUndefined(this.SOURCE_NAME)) {
+                    if (isUndefined(this.LISTING)) {
+                        this.FINAL_URL = reddit_frame + ".json";
+                    }else {
+                        if (isUndefined(this.OPT_PARAMS)) {
+                            this.FINAL_URL = reddit_frame + this.LISTING + "/.json";
+                        } else {
+                            this.FINAL_URL = reddit_frame + this.LISTING + "/.json?" + this.OPT_PARAMS;
+                        }
                     }
-                }
-            } else {
-                if (isUndefined(this.LISTING)) {
-                    this.FINAL_URL = reddit_frame + "r/" + this.SOURCE_NAME + "/.json";
                 } else {
-                    if (isUndefined(this.OPT_PARAMS)) {
-                        this.FINAL_URL = reddit_frame + "r/" + this.SOURCE_NAME + "/" + this.LISTING + "/.json";
+                    if (isUndefined(this.LISTING)) {
+                        this.FINAL_URL = reddit_frame + "r/" + this.SOURCE_NAME + "/.json";
                     } else {
-                        this.FINAL_URL = reddit_frame + "r/" + this.SOURCE_NAME + "/" + this.LISTING + "/.json?" + this.OPT_PARAMS;
+                        if (isUndefined(this.OPT_PARAMS)) {
+                            this.FINAL_URL = reddit_frame + "r/" + this.SOURCE_NAME + "/" + this.LISTING + "/.json";
+                        } else {
+                            this.FINAL_URL = reddit_frame + "r/" + this.SOURCE_NAME + "/" + this.LISTING + "/.json?" + this.OPT_PARAMS;
+                        }
                     }
                 }
             }
+
             this.RESPONSE = apiRequest('json', this.FINAL_URL);
         }
         this.parse = function(item) {
@@ -56,9 +72,16 @@ function apiheap(source, key) {
                 if (isUndefined(itemReq)) {
                     RETURN_VALUE = reddit_json_data.responseJSON.data.children;
                 } else {
-                    $(reddit_json_data.responseJSON.data.children).each(function(index, value) {
-                        RETURN_VALUE.push(value.data[itemReq]);
-                    });
+                    if (itemReq == "comments"){
+                        var data = reddit_json_data.responseJSON.data;
+                        for(var i=0;i<data.length;i++){
+                            RETURN_VALUE.push(data[i].body);
+                        }
+                    }else{
+                        $(reddit_json_data.responseJSON.data.children).each(function(index, value) {
+                            RETURN_VALUE.push(value.data[itemReq]);
+                        });
+                    }
                 }
             } catch (err) {
                 errorHandle("error| LOG:" + err + " ..." + "reddiit parse error");
